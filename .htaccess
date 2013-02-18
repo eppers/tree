@@ -1,0 +1,9 @@
+#Options FollowSymLinks
+
+RewriteEngine On
+
+
+RewriteRule ^index.html$ index.php [L]
+RewriteRule ^(.*),(.*).html$ ./?site=$1&details=$2 [L]
+RewriteRule ^(.*).html$ ./?site=$1 [L]
+

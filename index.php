@@ -1,3 +1,21 @@
+<?php
+$site=$_GET['site'];
+
+switch($site) {
+    case 'home':
+        $file='home.php';
+        break;
+    case 'o-szkolce':
+        $file='o-szkolce.php';
+        break;
+    default: 
+        $file='home.php';
+        break;
+}
+
+$path='include/'.$file;
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -27,8 +45,8 @@
             <div id="menu-site-bg" class="site">
                 <div class="page">
                     <ul>
-                        <li><a href="">Strona główna</a></li>
-                        <li><a href="./o-szkolce.html">O szkółce</a></li>
+                        <li><a href="./?site=home">Strona główna</a></li>
+                        <li><a href="./?site=o-szkolce">O szkółce</a></li>
                         <li><a href="">Oferta/cennik</a></li>
                         <li><a href="">Dojazd</a></li>
                         <li><a href="">Kontakt</a></li>
@@ -90,64 +108,8 @@
 	<div id="content-bg">
             <div id="content-site-bg" class="site">
                 <div class="page">
-                    <div id="box-left-container">
-                        <div class="box-left">
-                            <div class="box-left-content">
-                                <img src="images/box_left_img.jpg" />
-                                <div class="right">
-                                    <h3>Wycinka drzew</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
-                                    </p>
-                                    <a href="" class="more">więcej</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-left">
-                            <div class="box-left-content">
-                                <img src="images/box_left_img.jpg" />
-                                <div class="right">
-                                    <h3>Transport</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
-                                    </p>
-                                    <a href="" class="more">więcej</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-left">
-                            <div class="box-left-content">
-                                <img src="images/box_left_img.jpg" />
-                                <div class="right">
-                                    <h3>Szkółka</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
-                                    </p>
-                                    <a href="" class="more">więcej</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-left">
-                            <div class="box-left-content">
-                                <img src="images/box_left_img.jpg" />
-                                <div class="right">
-                                    <h3>Prace ziemne</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
-                                    </p>
-                                    <a href="" class="more">więcej</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="main-container">
-                        <h2>
-                            Chcesz zobaczyc proces rozrastania sie <br />
-                            <span>tuji oraz innych drzewek iglastych?</span>
-                        </h2>
-                        <img src="images/home_trees.jpg" />
-                        <p>W ofercie posiadmy jendoroczne sadzonki jak i kilkuletnie drzewka</p>
-                    </div>
+                    <?php include($path); ?>
+               
                 </div>  
             </div>
 	</div>
@@ -201,5 +163,3 @@
 
 </body>
 </html>
-
-
