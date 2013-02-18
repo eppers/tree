@@ -1,0 +1,372 @@
+@import url('http://fonts.googleapis.com/css?family=Oswald:700,400&subset=latin-ext,latin');
+
+/* ============================= global ====================== */
+
+root { 
+    display: block;
+}
+
+body {
+        background: #1d1f1d;
+        font:10px/21px Oswald, sans-serif;
+}
+
+.site {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.page {
+    width: 920px;
+    margin: 0 auto;
+}
+
+h2 {
+    font: 20px Oswald, sans-serif;
+    font-weight: 600;
+    color: #bed203;
+}
+
+h3 {
+    color: #659400;
+    font: 14px Oswald, sans-serif;
+}
+
+ul li {
+        display: inline-block;
+}
+
+.right {
+    float: right;
+}
+
+/* ============================= top ====================== */
+
+#top-bg {
+        background: url('../images/top_bg.jpg') repeat-x;
+        height: 150px;
+        width: 100%;
+}
+
+#top-site-bg {
+	background-image: url('../images/top_site_bg.jpg');
+}
+
+#top-site-bg .page {
+        position: relative;
+}
+
+#top-site-bg h1 {
+        width:181px;
+}
+
+#logo {
+        margin-top: 72px;
+        margin-left: 23px;
+    	position:relative;
+	display:inline-block;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	width:181px;
+	height:60px;
+	background:url(../images/logo.png) 0 0 no-repeat;
+}
+
+p#telephone-top {
+    position: absolute;
+    padding-left: 25px;
+    font: 20px/20px Oswald, sans-serif;
+    color: #9cc45f;
+    right: 0;
+    bottom: -5px;
+    background: url('../images/telephone_icon_big.png') 0 0 no-repeat;
+}
+
+p#telephone-top span{
+    padding-left: 25px;
+}
+
+/* ============================= menu ====================== */
+
+#menu-bg {
+        background: #000;
+	width:100%;
+	height:49px;
+}
+
+#menu-site-bg {
+	width:100%;
+        background: #000;
+        text-transform:uppercase;
+}
+
+#menu-site-bg ul li a {
+        display: inline-block;
+        position: relative;
+        top: -2px;
+        font: 12px/54px Oswald, sans-serif;
+        padding: 0 30px;
+        text-decoration: none;
+        color: #fff;
+        height: 54px;
+}
+
+#menu-site-bg ul li a:hover {
+        background: #acca20;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+}
+
+/* ============================= middle (slider) ====================== */
+
+#middle-bg {
+    	background: url('../images/middle_bg.jpg') repeat-x;
+	width:100%;
+	height:321px;
+}
+
+#middle-site-bg {
+        background-image: url('../images/middle_site_bg.jpg'); 
+}
+
+#slider {
+        display: inline-block;
+        margin-top: 15px;
+        width: 900px;
+        height: 264px;
+        padding: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        background: #fff;
+}
+
+#slider #left-container {
+        width: 375px;
+        height: 100%;
+        float: left;
+}
+
+#left-container #top {
+        height: 170px;
+        width: 100%;
+        
+   /*     background: url('../images/slider-top.jpg') no-repeat;*/
+}
+
+#left-container #bottom {
+        height: 94px;
+        width: 100%;
+}
+
+#left-container #bottom h2 {
+    padding-left: 30px;
+    padding-top: 15px;
+    line-height: 24px;
+}
+
+#left-container p {
+    font-size: 16px;
+    color: #659400;
+    padding-left: 30px;   
+}
+
+#left-container p#grey {
+    margin-top: 10px;
+    color: #474747;
+    float: right;
+    padding-right: 20px;
+
+}
+
+#right-container {
+    float: left;
+    height: 264px;
+    overflow: hidden;
+}
+
+/* ============================= main content ====================== */
+
+#content-bg {
+        background: #fff;
+	width: 100%;
+}
+
+#content-site-bg {
+	padding-bottom: 20px;
+}
+
+#content-site-bg .page {
+    padding-top: 20px;
+}
+
+#box-left-container {
+        display: inline-block;
+        margin-right: 15px;
+}
+
+.box-left {
+    width: 214px;
+    padding: 3px;
+    height: 79px;
+    background: #bcd44a;
+    border: 1px solid #9baf4c;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.box-left-content {
+    background: #fefefe;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.box-left-content .right {
+    width: 115px;
+}
+
+.box-left-content img {
+    margin: 5px 5px 5px 5px;
+}
+
+.box-left-content h3 {
+    display: inline-block;
+    margin-bottom: 2px;
+}
+
+.box-left-content p {
+    display: inline-block;
+    width: 100px;
+    height: 35px;
+    overflow: hidden;
+    font: 10px/12px Arial, sans-serif;
+    text-align: justify;
+}
+
+.box-left-content a.more {
+    margin-right: 10px;
+    float: right;
+    color: #659400;
+    font-weight: bold;
+    font-size: 10px;
+    padding-right: 16px;
+    background: url('../images/more.jpg') right center no-repeat;
+}
+
+#main-container {
+    display: inline-block;
+    text-align: center;
+}
+
+#main-container h2{
+    padding-top: 10px;
+    color: #bfd303;
+}
+
+#main-container h2 span{
+    color: #8d8888;
+}
+
+#main-container p {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #7f7e7e;
+}
+
+#main-container.o-szkolce {
+    text-align: left;
+    width: 647px;
+}
+
+
+
+/* ============================= footer ====================== */
+
+#footer-bg {
+    	background: url('../images/footer_bg.jpg') repeat-x;
+        width: 100%;
+	height:250px;
+}
+
+#footer-site-bg {
+	background-image: url('../images/footer_site_bg.jpg');
+}
+
+#footer-site-bg .page > div {
+    padding-top: 35px;
+    display: inline-block;
+}
+
+#footer-site-bg .page > div a {
+    color: #9cc45f;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+#footer-left {
+    margin-left: 35px;
+    width: 230px;
+}
+
+#footer-left > div {
+    float: left;
+    padding-bottom: 5px;
+    background: url('../images/footer_menu.png') right bottom no-repeat;
+}
+
+ul#footer-uslugi-container li {
+    width: 160px;
+    padding-right: 25px;
+    padding-left: 5px;
+}
+
+ul#footer-uslugi-container li ul li{
+    width: 100%;
+    height: 23px;
+    background: url('../images/footer_menu.png') 0 bottom no-repeat;
+}
+
+ul#footer-uslugi-container li ul li:last-child {
+    background: none;
+}
+
+ul#footer-uslugi-container li ul li a{
+    line-height: 23px;
+}
+
+p#footer-address, p#footer-telephone, p#footer-email  {
+    font-size: 12px;
+    color: #9cc45f;
+    float: left;
+}
+
+p.title {
+    font-size: 18px;
+    color: #95ac03;
+    padding-bottom: 10px;
+}
+
+p#footer-address {
+    padding-right: 10px;
+}
+
+p#footer-telephone {
+    padding-left: 17px;
+    background: url('../images/telephone_icon.png') left 2px no-repeat;
+}
+
+p#footer-email {
+    margin-left: 35px;
+    margin-top: 5px;
+    padding-left: 19px;
+    background: url('../images/email_icon.png') left 3px no-repeat;   
+}
