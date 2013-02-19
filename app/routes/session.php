@@ -26,9 +26,9 @@ $app->get('/kontakt', function () use ($app) {
     $app->render('kontakt.php');
 });
 
-$app->get('/internet-przewodowy', function () use ($app) {
+$app->get('/cennik', function () use ($app) {
 
-    $app->render('przewodowy.php');
+    $app->render('cennik.php');
 });
 
 $app->get('/internet-bezprzewodowy', function () use ($app) {
