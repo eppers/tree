@@ -10,7 +10,7 @@
 
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="/public/js/bjqs-1.3.min.js"></script>
-
+<script src="/public/js/jquery.scripts.js"></script>
 </head>
 <body>
 
