@@ -139,6 +139,7 @@
 </div>
         
                         
+<<<<<<< HEAD
                           <div id="scrollbar1" class="jp-container">
                               <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
                         <div class="viewport">
