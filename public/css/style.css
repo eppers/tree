@@ -291,16 +291,31 @@ p#telephone-top span{
 
 /* ============================= cennik ====================== */
 
-#cennik-container {
-    
+#cennik-container { width: 620px; margin: 20px 0 10px; }
+#cennik-container .viewport { width: 590px; height: 330px; overflow: hidden; position: relative; }
+#cennik-container .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 0; margin: 0; }
+#cennik-container .scrollbar{ background: transparent url(../images/bg-scrollbar-track-y.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 19px; }
+#cennik-container .track { background: transparent url(../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:19px; position: relative; }
+#cennik-container .thumb { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 28px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
+#cennik-container .thumb .end { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 28px; }
+#cennik-container .disable { display: none; }
+.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
+
+#cennik-container p {
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
 }
 
 .product-container {
     display: block;
+    margin-bottom: 20px;
 }
 
 .img-container {
-    display: block;
+    display: inline-block;
+    padding-right: 40px;
 }
 
 .img-container img {
@@ -309,16 +324,44 @@ p#telephone-top span{
 }
 
 .product-name {
-    display: block;
+    display: inline-block;
     font-size: 20px;
+    margin-top: 25px;
+    width: 400px;
 }
 
 .product-name h4 {
+    display: inline-block;
     color: #bfd303;
+    padding-right: 25px;
+    line-height: 30px;    
 }
 
 .product-name p {
+    display: inline-block;
     color: #8d8888;
+    margin-top: 0;
+}
+
+.product-name > ul {
+    display: none;
+    padding-top: 15px;
+}
+
+.product-name span.slide-down {
+    display: inline-block;
+    width: 130px;
+    height: 30px;
+    color: #8d8888;
+    line-height: 30px;
+    font-weight: bold;
+    background: #f4fccf url('../images/cennik-dropdown-arrow.jpg') 105px center no-repeat;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
 slider-linia {
@@ -330,12 +373,18 @@ slier-suwak {
 }
 
 .product-container ul {
-    width: 410px;
+    
+    
 }
 
 .product-container li {
     font-size: 16px;
     height: 19px;
+    width: 400px; /* px instead of 100% - the toogle animation looks better*/
+    margin-bottom: 2px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .product-container li.green {
@@ -346,6 +395,32 @@ slier-suwak {
 .product-container li.grey {
     color: #fff;
     background: #cbc8c8;
+}
+
+.product-container ul li ul {
+    width: 100%;
+    height: 19px; /* the same height like in product-container ul li*/
+}
+
+.product-container ul li ul li{
+    float: left;
+    
+}
+
+.product-container ul li.name {
+    width: 160px;
+}
+
+.product-container ul li.lenght {
+    width: 95px;
+}
+
+.product-container ul li.size {
+    width: 60px;
+}
+
+.product-container ul li.price {
+    width: 85px;
 }
 
 /* ============================= footer ====================== */
@@ -429,87 +504,3 @@ p#footer-email {
     padding-left: 19px;
     background: url('../images/email_icon.png') left 3px no-repeat;   
 }
-
-
-
-
-
-/* Some lines are redudant. I just want to make sure its clear what is needed for a single instance.
-
-/* Examples - Tiny Scrollbar */
-#scrollbar1 { width: 520px; margin: 20px 0 10px; }
-#scrollbar1 .viewport { width: 500px; height: 200px; overflow: hidden; position: relative; }
-#scrollbar1 .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 0; margin: 0; }
-#scrollbar1 .scrollbar{ background: transparent url(http://baijs.nl/tinyscrollbar/images/bg-scrollbar-track-y.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 15px; }
-#scrollbar1 .track { background: transparent url(http://baijs.nl/tinyscrollbar/images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:15px; position: relative; }
-#scrollbar1 .thumb { background: transparent url(http://baijs.nl/tinyscrollbar/images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
-#scrollbar1 .thumb .end { background: transparent url(http://baijs.nl/tinyscrollbar/images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
-#scrollbar1 .disable { display: none; }
-.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
-
-#scrollbar2 { width: 251px; margin: 20px 0 10px; }
-#scrollbar2 .viewport { width: 236px; height: 125px; overflow: hidden; position: relative; }
-#scrollbar2 .overview { list-style: none; width: 1416px; padding: 0; margin: 0; position: absolute; left: 0; top: 0;  }
-#scrollbar2 .overview img{ float: left; }
-#scrollbar2 .scrollbar{ background: transparent url(../images/bg-scrollbar-track-x.png) no-repeat 0 0; position: relative; margin: 0 0 5px; clear: both; height: 15px; }
-#scrollbar2 .track { background: transparent url(../images/bg-scrollbar-trackend-x.png) no-repeat 100% 0; width: 100%; height:15px; position: relative; }
-#scrollbar2 .thumb { background: transparent url(../images/bg-scrollbar-thumb-x.png) no-repeat 100% 50%; height: 25px; cursor: pointer; overflow: hidden; position: absolute; left: 0; top: -5px; }
-#scrollbar2 .thumb .end{ background: transparent url(../images/bg-scrollbar-thumb-x.png) no-repeat 0 50%; overflow: hidden; height: 25px; width: 5px;}
-#scrollbar2 .disable { display: none; }
-.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
-
-#scrollbar3 { width: 320px;  margin: 20px 0 10px; }
-#scrollbar3 .viewport { width: 300px; height: 300px; overflow: hidden; position: relative; }
-#scrollbar3 .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 0; margin: 0; }
-#scrollbar3 .scrollbar{ background: transparent url(../images/bg-scrollbar-track-y.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 15px; }
-#scrollbar3 .track { background: transparent url(../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:15px; position: relative; }
-#scrollbar3 .thumb { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
-#scrollbar3 .thumb .end { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
-#scrollbar3 .disable { display: none; }
-.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
-
-#scrollbar4 { width: 520px;  margin: 20px 0 10px; }
-#scrollbar4 .viewport { width: 500px; height: 200px; overflow: hidden; position: relative; }
-#scrollbar4 .overview { list-style: none; position: absolute; left: 0; top: 0; }
-#scrollbar4 .scrollbar{ background: transparent url(../images/bg-scrollbar-track-y.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 15px; }
-#scrollbar4 .track { background: transparent url(../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:15px; position: relative; }
-#scrollbar4 .thumb { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
-#scrollbar4 .thumb .end { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
-#scrollbar4 .disable { display: none; }
-.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
-
-#scrollbar5 { width: 520px;  overflow: hidden; margin: 20px 0 10px; }
-#scrollbar5 .viewport { width: 500px; height: 200px; overflow: hidden; position: relative; }
-#scrollbar5 .overview { list-style: none; position: absolute; left: 0; top: 0; }
-#scrollbar5 .scrollbar{ background: transparent url(../images/bg-scrollbar-track-y.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 15px; }
-#scrollbar5 .track { background: transparent url(../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:15px; position: relative; }
-#scrollbar5 .thumb { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
-#scrollbar5 .thumb .end { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
-#scrollbar5 .disable { display: none; }
-#scroll5text { display: none;}
-#scroll5text2 { display: none;}
-#scroll5text3 { display: none;}
-#scroll5load { display:block; float:left; padding: 0 10px 0 0; }
-#scroll5load2 { display:block; float:left; padding: 0 10px 0 0; }
-#scroll5load3 { display:block; float:left; padding: 0 10px 0 0; }
-#scroll5load4 { display:block; float:left; padding: 0 10px 0 0; clear: left; }
-#scroll5load5 { display:block; float:left; padding: 0 10px 0 0; }
-#scroll5load6 { display:block; float:left; padding: 0 10px 0 0; clear: left;}
-#scroll5load6 { display:block; float:left; padding: 0 10px 0 0; }
-#scrollbar5 .loadtext p { clear: both; margin: 0; padding: 20px 0 0; }
-.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
-
-#scrollbar6 { width: 520px;  overflow: hidden; margin: 20px 0 10px; }
-#scrollbar6 .viewport { width: 500px; height: 200px; overflow: hidden; position: relative; }
-#scrollbar6 .overview { list-style: none; position: absolute; left: 0; top: 0; }
-#scrollbar6 .scrollbar{ background: transparent url(../images/bg-scrollbar-track-y.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 15px; }
-#scrollbar6 .track { background: transparent url(../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:15px; position: relative; }
-#scrollbar6 .thumb { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
-#scrollbar6 .thumb .end { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
-#scrollbar6 .disable { display: none; }
-#scrollbar6 .loadtext p { clear: both; margin: 0; padding: 20px 0 0; }
-.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
-
-#scroll6load { display:block; float:left; padding: 0 10px 0 0; }
-#scroll6load2 { display:block; float:left; padding: 0 10px 0 0; }
-#scroll6load3 { display:block; float:left; padding: 0 10px 0 0; }

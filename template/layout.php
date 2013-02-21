@@ -29,7 +29,7 @@
                     <ul>
                         <li><a href="./home">Strona główna</a></li>
                         <li><a href="./o-szkolce">O szkółce</a></li>
-                        <li><a href="">Oferta/cennik</a></li>
+                        <li><a href="./cennik">Oferta/cennik</a></li>
                         <li><a href="">Dojazd</a></li>
                         <li><a href="">Kontakt</a></li>
                     </ul>
