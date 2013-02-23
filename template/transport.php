@@ -52,72 +52,34 @@
                             </div>
                         </div>
                     </div>
-                    <div id="main-container" class="cennik-uslugi">
+                    <div id="main-container" class="transport">
                         <h2>
-                            Cennik <span>(cena za m2)</span>
+                            Transport
                         </h2>
-                        <div id="cennik-uslugi-container">
-                            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
-                            <div class="viewport">
-                                <div class="overview">
-                                    <div class="service-container">
-                                        <h4>Pielegnacja ogrodu</h4>
-                                        <ul class="service-list">
-                                            <li>
-                                                <p>Pielęgnacja ogrodu</p>
-                                                <p class="service-price">od 100 zl</p>
-                                            </li>
-                                            <li>
-                                                <p>Strzyżenie</p>
-                                                <p class="service-price">od 25 zl</p>
-                                            </li>
-                                            <li>
-                                                <p>Wycinka</p>
-                                                <p class="service-price">od 25 zl</p>
-                                            </li>
-                                            <li>
-                                                <p>Podlewanie trawników</p>
-                                                <p class="service-price">od 25 zl</p>
-                                            </li>
-                                            <li>
-                                                <p>Wypędzanie kretów</p>
-                                                <p class="service-price">od 225 zl</p>
-                                            </li>
-                                            <li>
-                                                <p>Odbieranie prania</p>
-                                                <p class="service-price">od 15 zl</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                     <div class="service-container">
-                                        <h4>Pielegnacja ogrodu</h4>
-                                        <ul class="service-list">
-                                            <li>
-                                                <p>Pielęgnacja ogrodu</p>
-                                                <p class="service-price">od 100 zl</p>
-                                            </li>
-                                            <li>
-                                                <p>Strzyżenie</p>
-                                                <p class="service-price">od 25 zl</p>
-                                            </li>
-                                            <li>
-                                                <p>Wycinka</p>
-                                                <p class="service-price">od 25 zl</p>
-                                            </li>
-                                            <li>
-                                                <p>Podlewanie trawników</p>
-                                                <p class="service-price">od 25 zl</p>
-                                            </li>
-                                            <li>
-                                                <p>Wypędzanie kretów</p>
-                                                <p class="service-price">od 225 zl</p>
-                                            </li>
-                                            <li>
-                                                <p>Odbieranie prania</p>
-                                                <p class="service-price">od 15 zl</p>
-                                            </li>
-                                        </ul>
-                                    </div>
+                        <div id="transport-container">
+                            <p>
+                                Zapraszamy do skorzystania z oferty transportu wybranych drzewek i krzewów zakupionych
+                                w naszej szkółce.
+                            </p>
+                            <div class="transport-option">
+                                <div class="left">
+                                    <ul id="transport-price">
+                                        <li>do 10 km - 35 zł</li>
+                                        <li>do 30 km  - 85 zł</li>
+                                        <li>od 30 km  - 2,5zł/km</li>
+                                    </ul>
+                                </div>
+                                <div class="right">
+                                    <img src="/public/images/transport_merc.jpg" alt="transport drzewek" id="merc"/>
+                                </div>
+
+                            </div>
+                            <div class="transport-option">
+                                <div class="left">
+                                    <img src="/public/images/transport_promo.jpg" alt="tranposrt promocja" id="promocja"/>
+                                </div>
+                                <div class="right">
+                                    <img src="/public/images/transport_przyczepa.jpg" alt="trasport przyczepa" id="przyczepa"/>
                                 </div>
                             </div>
                         </div>

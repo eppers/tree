@@ -481,6 +481,60 @@ ul.service-list li p.service-price {
     float: right;
 }
 
+/* ============================= transport ====================== */
+
+#main-container.transport {
+    width: 647px;
+    text-align: left;
+}
+
+#main-container.transport p {
+   
+}
+
+#transport-container > p{
+     margin-top: 0;
+     margin-bottom: 40px;
+}
+
+.transport-option {
+    width: 100%;
+    float: left;
+    margin-bottom: 30px;
+    height: 140px;
+}
+
+.transport-option .left {
+    display: inline-block;
+    text-align: center;
+    width: 320px;
+}
+
+.transport-option .left p {
+    display: inline-block;
+}
+
+.transport-option .right {
+    display: inline-block;
+    width: 320px;
+    text-align: left;
+}
+
+.transport-option img#promocja {
+    margin-top: 22px;
+}
+
+ul#transport-price {
+    margin-top: 20px;
+}
+
+ul#transport-price li{
+    display: block;
+    font-size: 20px;
+    color: #bfd303;
+    line-height: 30px;  
+}
+
 /* ============================= footer ====================== */
 
 #footer-bg {

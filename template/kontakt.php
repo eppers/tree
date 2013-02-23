@@ -1,66 +1,93 @@
 {% extends 'layout.php' %}
 
-{% block page_title %}Kontakt{% endblock %}
-{% block content %} 
- <div id="adres-container">
-          <div id="left">
-              <p id="title" class="bold">
-                  <img src="/public/images/logo_kontakt.jpg" /><br/>
-                  EURO.NET.PL S.C.<br/>
-                  <span class="orange">Z.Kossak-Szatkowskiej 6<br/>
-                  43-400 Cieszyn</span><br/>
-              </p>
-              <p id="czynne" class="box grey-dark">
-                  Biuro czynne:<br/>
-                  <b>pon-pt</b> : godz. 8-17, <br />
-                  <b>sob</b> : godz. 9-13
-              </p>
-              <p id="regon" class="box">
-                  <span class="grey-dark">NIP: 677-230-58-37</span><br/>
-                  <span class="grey-dark">REGON: 120615852</span><br/><br/>
-                  <span class="grey-dark"><b>Email: </b></span><a class="email-address">biuro <span class="pokaz-email" name="biuro">pokaż cały adres...</span></a>
-              </p>
-              <div id="bok" class="box">
-                  <img src="/public/images/icon_bok.png" />
-                  <p class="grey-dark">
-                      <span>Biuro Obsługi Klienta (BOK)</span><br/>
-                      Tomasz Mikietyn<br/>
-                      tel./fax 33 8522322<br/>
-                      tel. kom. 507575405<br/>
-                      <a class="email-address">tomasz <span class="pokaz-email" name="tomasz_mikietyn">pokaż cały adres...</span></a>         
-                  </p>
-              </div>
-              <div id="serwis" class="box">
-                  <img src="/public/images/icon_serwis.png" />
-                  <p class="grey-dark">
-                      <span>Serwis / Administracja sieci</span><br/>
-                      Przemysław Sobota<br/>
-                      tel. kom. 513978908<br/>
-                      <a class="email-address">przemyslaw <span class="pokaz-email" name="przemyslaw_sobota">pokaż cały adres...</span></a>
-                  </p>
-              </div>
-              <div id="serwis" class="box">
-                  <img src="/public/images/icon_serwis.png" />
-                  <p class="grey-dark">
-                      <span>Serwis / Instalacje</span><br/>
-                      Tomasz Karwowski<br/>
-                      tel. kom. 793110000<br/>
-                      <a class="email-address">tomasz <span class="pokaz-email" name="tomasz_karwowski">pokaż cały adres...</span></a>
-                  </p>
-              </div>
-              <div id="instalacje" class="box">
-                  <img src="/public/images/icon_serwis.png" />
-                  <p class="grey-dark">
-                      <span>Serwis / Instalacje światłowodowe</span><br/>
-                      Leszek Dorighi<br/>
-                      tel. kom. 509328272<br/>
-                      <a class="email-address">leszek <span class="pokaz-email" name="leszek_dorighi">pokaż cały adres...</span></a>
-                  </p>
-              </div>
-          </div>
-          <div id="right">
-              <div id="map"><iframe width="680" height="660" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.pl/maps?f=q&amp;source=s_q&amp;hl=pl&amp;geocode=&amp;q=euro+net+cieszyn&amp;aq=&amp;sll=50.246665,19.004371&amp;sspn=2.806708,4.938354&amp;ie=UTF8&amp;hq=euro+net&amp;hnear=Cieszyn,+cieszy%C5%84ski,+%C5%9Bl%C4%85skie&amp;t=h&amp;fll=49.743459,18.650483&amp;fspn=0.00277,0.004823&amp;st=109146043351405611748&amp;rq=1&amp;ev=zi&amp;split=1&amp;ll=49.744062,18.648262&amp;spn=0.016639,0.04283&amp;z=14&amp;output=embed&amp;iwloc="></iframe><br /><small><a href="https://maps.google.pl/maps?f=q&amp;source=embed&amp;hl=pl&amp;geocode=&amp;q=euro+net+cieszyn&amp;aq=&amp;sll=50.246665,19.004371&amp;sspn=2.806708,4.938354&amp;ie=UTF8&amp;hq=euro+net&amp;hnear=Cieszyn,+cieszy%C5%84ski,+%C5%9Bl%C4%85skie&amp;t=h&amp;fll=49.743459,18.650483&amp;fspn=0.00277,0.004823&amp;st=109146043351405611748&amp;rq=1&amp;ev=zi&amp;split=1&amp;ll=49.744062,18.648262&amp;spn=0.016639,0.04283&amp;z=14" style="color:#0000FF;text-align:left">Wyświetl większą mapę</a></small></div>
-              <p id="nr-alarmowy" class="orange"><b>NUMER ALARMOWY DLA KLIENTÓW EURO.NET.PL:</b><br />  <span>536 159 853</span><br /> czynny w godzinach 08:00 - 21:00</p>
-          </div>
-      </div>
-{% endblock %} 
+{% block page_title %}Strona główna{% endblock %}
+{% block content %}
+             <div id="box-left-container">
+                        <div class="box-left">
+                            <div class="box-left-content">
+                                <img src="/public/images/box_left_img.jpg" />
+                                <div class="right">
+                                    <h3>Wycinka drzew</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
+                                    </p>
+                                    <a href="" class="more">więcej</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-left">
+                            <div class="box-left-content">
+                                <img src="/public/images/box_left_img.jpg" />
+                                <div class="right">
+                                    <h3>Transport</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
+                                    </p>
+                                    <a href="" class="more">więcej</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-left">
+                            <div class="box-left-content">
+                                <img src="/public/images/box_left_img.jpg" />
+                                <div class="right">
+                                    <h3>Szkółka</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
+                                    </p>
+                                    <a href="" class="more">więcej</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-left">
+                            <div class="box-left-content">
+                                <img src="/public/images/box_left_img.jpg" />
+                                <div class="right">
+                                    <h3>Prace ziemne</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
+                                    </p>
+                                    <a href="" class="more">więcej</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="main-container" class="transport">
+                        <h2>
+                            Transport
+                        </h2>
+                        <div id="transport-container">
+                            <p>
+                                Zapraszamy do skorzystania z oferty transportu wybranych drzewek i krzewów zakupionych
+                                w naszej szkółce.
+                            </p>
+                            <div class="transport-option">
+                                <div class="left">
+                                    <ul id="transport-price">
+                                        <li>do 10 km - 35 zł</li>
+                                        <li>do 30 km  - 85 zł</li>
+                                        <li>od 30 km  - 2,5zł/km</li>
+                                    </ul>
+                                </div>
+                                <div class="right">
+                                    <img src="/public/images/transport_merc.jpg" alt="transport drzewek" id="merc"/>
+                                </div>
+
+                            </div>
+                            <div class="transport-option">
+                                <div class="left">
+                                    <img src="/public/images/transport_promo.jpg" alt="tranposrt promocja" id="promocja"/>
+                                </div>
+                                <div class="right">
+                                    <img src="/public/images/transport_przyczepa.jpg" alt="trasport przyczepa" id="przyczepa"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                        
+         
+		<script type="text/javascript">
+		$('#cennik-uslugi-container').tinyscrollbar();
+		</script>
+{% endblock %}
