@@ -31,9 +31,14 @@ $app->get('/cennik', function () use ($app) {
     $app->render('cennik.php');
 });
 
-$app->get('/internet-bezprzewodowy', function () use ($app) {
+$app->get('/cennik-uslugi', function () use ($app) {
 
-    $app->render('bezprzewodowy.php');
+    $app->render('cennik-uslugi.php');
+});
+
+$app->get('/transport', function () use ($app) {
+
+    $app->render('transport.php');
 });
 
 /*
