@@ -2,92 +2,70 @@
 
 {% block page_title %}Strona główna{% endblock %}
 {% block content %}
-             <div id="box-left-container">
-                        <div class="box-left">
-                            <div class="box-left-content">
-                                <img src="/public/images/box_left_img.jpg" />
-                                <div class="right">
-                                    <h3>Wycinka drzew</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
-                                    </p>
-                                    <a href="" class="more">więcej</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-left">
-                            <div class="box-left-content">
-                                <img src="/public/images/box_left_img.jpg" />
-                                <div class="right">
-                                    <h3>Transport</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
-                                    </p>
-                                    <a href="" class="more">więcej</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-left">
-                            <div class="box-left-content">
-                                <img src="/public/images/box_left_img.jpg" />
-                                <div class="right">
-                                    <h3>Szkółka</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
-                                    </p>
-                                    <a href="" class="more">więcej</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-left">
-                            <div class="box-left-content">
-                                <img src="/public/images/box_left_img.jpg" />
-                                <div class="right">
-                                    <h3>Prace ziemne</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia scelerisque dolor, eu posuere turpis porta vitae. Aliquam at risus lectus, id malesuada odio. Etiam vitae urna a diam aliquam eleifend. Donec eros diam, sodales ac fringilla varius, auctor posuere purus. Maecenas pharetra viverra ultrices. Sed a tortor sit amet sapien vestibulum aliquam et eget turpis. Donec dolor orci, lacinia a dapibus viverra, vulputate sollicitudin metus. Donec bibendum venenatis lectus, ut cursus purus tempus sit amet. Integer leo mi, hendrerit vel pellentesque ut, adipiscing ac erat. Fusce ut varius leo. Mauris lobortis consequat ipsum in ultricies. Maecenas nibh quam, adipiscing at fringilla placerat, tincidunt eu lectus. Nullam vitae feugiat lectus.
-                                    </p>
-                                    <a href="" class="more">więcej</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="main-container" class="transport">
+        {% include 'left-boxes.php' %}
+                    <div id="main-container" class="kontakt">
                         <h2>
-                            Transport
+                            Kontakt
                         </h2>
-                        <div id="transport-container">
-                            <p>
-                                Zapraszamy do skorzystania z oferty transportu wybranych drzewek i krzewów zakupionych
-                                w naszej szkółce.
-                            </p>
-                            <div class="transport-option">
-                                <div class="left">
-                                    <ul id="transport-price">
-                                        <li>do 10 km - 35 zł</li>
-                                        <li>do 30 km  - 85 zł</li>
-                                        <li>od 30 km  - 2,5zł/km</li>
-                                    </ul>
-                                </div>
-                                <div class="right">
-                                    <img src="/public/images/transport_merc.jpg" alt="transport drzewek" id="merc"/>
-                                </div>
-
-                            </div>
-                            <div class="transport-option">
-                                <div class="left">
-                                    <img src="/public/images/transport_promo.jpg" alt="tranposrt promocja" id="promocja"/>
-                                </div>
-                                <div class="right">
-                                    <img src="/public/images/transport_przyczepa.jpg" alt="trasport przyczepa" id="przyczepa"/>
+                        <div id="kontakt-container">
+                            <div id="left">
+                                <div id="map"></div>
+                                <div class="address">
+                                    <span>
+                                            ul. Prusa 21,
+                                            43-400 Cieszyn.
+                                    </span>
+                                    <p>
+                                            Telefon: <span >662 049 323</span><br>
+                                            Telefon: <span >608 848 428</span><br>
+                                            E-mail: <a class="mailLink" href="mailto:">kontakt@grasston.pl</a>
+                                    </p>
                                 </div>
                             </div>
+                            <div id="right">
+                                <form id="form1">
+                                    <div class="success">Formularz wysłany<br>
+                                        <strong>Skontaktujemy się z Tobą.</strong> 
+                                    </div>
+                                        <fieldset>
+                                                <label class="name">
+                                                        <input type="text" value="Imię:">
+                                                        <span class="error">*To nie jest poprawne imie.</span> <span class="empty">*To pole jest wymagane.</span> </label>
+                                                <br>
+                                                <label class="email">
+                                                        <input type="email" value="E-mail:">
+                                                        <span class="error">*To nie jest poprawny adres email.</span> <span class="empty">*To pole jest wymagane.</span> </label>
+                                                <br>
+                                                <label class="phone">
+                                                                    <input type="tel" value="Telefon:">
+                                                                    <span class="error">*This is not a valid phone number.</span> <span class="empty">*To pole jest wymagane.</span> </label>
+                                                <br>
+                                                <label class="message">
+                                                        <textarea>Wiadmość:</textarea>
+                                                        <span class="error">*Wiadomość jest za krótka.</span> <span class="empty">*To pole jest wymagane.</span> </label>
+                                                <br>
+                                                <div class="btns"><a href="#" class="grey" data-type="reset">wyczyść</a><a href="#" class="more" data-type="submit">wyślij</a></div>
+                                        </fieldset>
+                                </form>
+                            </div>
+                                
                         </div>
                     </div>
-        
-                        
-         
-		<script type="text/javascript">
-		$('#cennik-uslugi-container').tinyscrollbar();
-		</script>
+ <script type="text/javascript">
+     $(document).ready(function(){
+      var map = new GMaps({
+        div: '#map',
+        lat: 49.736733,
+        lng: 18.636525,
+        disableDefaultUI: true,
+        navigationControl: true
+      });
+      map.addMarker({
+        lat: 49.736733,
+        lng: 18.636525,
+        title: 'Grasston'
+      });
+     
+    });
+  </script>
 {% endblock %}

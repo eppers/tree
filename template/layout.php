@@ -9,7 +9,12 @@
 <link rel="stylesheet" href="/public/css/style.css"></link>
 
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
 <script src="/public/js/bjqs-1.3.min.js"></script>
+<script src="/public/js/forms.js"></script>
+<script src="/public/js/googleMap.js"></script>
+ 
 <script src="/public/js/jquery.scripts.js"></script>
 </head>
 <body>
@@ -31,7 +36,7 @@
                         <li><a href="./o-szkolce">O szkółce</a></li>
                         <li><a href="./cennik">Oferta/cennik</a></li>
                         <li><a href="">Dojazd</a></li>
-                        <li><a href="">Kontakt</a></li>
+                        <li><a href="./kontakt">Kontakt</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,10 +53,10 @@
 
                                     <!-- start Basic Jquery Slider -->
                                     <ul class="bjqs">
-                                    <li><img src="/public/images/slider-top.jpg" title="Automatically generated caption"></li>
-                                    <li><img src="/public/images/slider-top2.jpg" title="Automatically generated caption"></li>
-                                    <li><img src="/public/images/slider-top3.jpg" title="Automatically generated caption"></li>
-                                    <li><img src="/public/images/slider-top4.jpg" title="Automatically generated caption"></li>
+                                    <li><img src="/public/images/slider-top.jpg" title=""></li>
+                                    <li><img src="/public/images/slider-top2.jpg" title=""></li>
+                                    <li><img src="/public/images/slider-top3.jpg" title=""></li>
+                                    <li><img src="/public/images/slider-top4.jpg" title=""></li>
                                     </ul>
                                     <!-- end Basic jQuery Slider -->
 

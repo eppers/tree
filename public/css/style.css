@@ -535,6 +535,112 @@ ul#transport-price li{
     line-height: 30px;  
 }
 
+/* ============================= kontakt ====================== */
+
+#main-container.kontakt {
+    text-align: left;
+    margin-left: 20px;
+}
+
+#main-container.kontakt h2 {
+    margin-bottom: 40px;
+}
+
+#kontakt-container p{
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 0;
+    color: #7f7e7e;
+}
+
+#kontakt-container #left {
+    float: left;
+    width: 345px;
+}
+
+#kontakt-container #left a {
+    color: #bed203;
+}
+
+#kontakt-container #right {
+    float: right;
+    width: 295px;
+}
+
+.address span {
+    font-size: 14px;
+    line-height: 22px;
+    color: #7f7e7e;
+}
+
+#map {
+    width: 345px;
+    height: 200px;
+    background: #000;
+    margin-bottom: 10px;
+    border: 5px solid #bed203;
+}
+    
+#form1{
+	float: right;
+}
+#form1 input {
+	margin:0;
+	border:1px solid #7f7e7e;
+	padding:12px 0 13px 15px;
+	width:230px;
+	box-shadow:none;
+	background:url(../images/contacts_form_bg.png) 0 0 repeat;
+}
+#form1 textarea {
+	resize: none;
+	margin:0;
+	border:1px solid #7f7e7e;
+	padding:12px 0 5px 15px;
+	width:230px;
+	height:134px;
+	overflow:auto;
+	background:url(../images/contacts_form_bg.png) 0 0 repeat;
+}
+#form1 label {
+	position:relative;
+	display:inline-block;
+	min-height:47px;
+}
+#form1 .error, #form1 .empty {
+	position:relative;
+	top: -3px;
+	display:none;
+	font-size:10px;
+	color:#676666;
+	text-transform:none;
+}
+.btns{
+	float:right;
+	padding-top:15px;
+}
+.btns a{
+        color: #fff;
+	margin-left:15px;
+        font-size: 12px;
+        font-weight: normal;
+        background: #7f7e7e;
+        padding: 5px;
+}
+
+.btns a.grey {
+        color: #7f7e7e;
+        background: none;
+}
+
+/* Form defaults */
+input, select, textarea {
+	font:12px/14px Oswald, sans-serif;
+	color:#676666;
+
+}
+
+
 /* ============================= footer ====================== */
 
 #footer-bg {
