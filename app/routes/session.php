@@ -33,7 +33,7 @@ $app->get('/cennik', function () use ($app) {
 
 $app->get('/cennik-uslugi', function () use ($app) {
 
-    $app->render('cennik-uslugi.php', array('slider-foto'=>'slider-services.jpg'));
+    $app->render('cennik-uslugi.php', array('sliderfoto'=>'slider-services.jpg'));
 });
 
 $app->get('/transport', function () use ($app) {

@@ -36,7 +36,7 @@
                         <li><a href="./o-szkolce">O szkółce</a></li>
                         <li><a href="./cennik">Oferta/cennik</a></li>
                         <li><a href="./cennik">Porady</a></li>
-                        <li><a href="http://allegro.pl/listing/user/listing.php?us_id=27977212">Allegro</a></li>
+                        <li><a href="http://allegro.pl/listing/user/listing.php?us_id=27977212" target="_blank">Allegro</a></li>
                         <li><a href="./kontakt">Kontakt</a></li>
                     </ul>
                 </div>
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div id="right-container">
-                            <img src="/public/images/{% if slider-foto is defined %}{{slider-foto}}{% else %}slider-services-trees.jpg{% endif %}" alt="Szkółka drzewek i krzewów ozdobnych" width="525" />
+                            <img src="/public/images/{% if sliderfoto is defined %}{{sliderfoto}}{% else %}slider-homepage-trees.jpg{% endif %}" alt="Szkółka drzewek i krzewów ozdobnych" width="525" />
                         </div>
                     </div>
                 </div>        
