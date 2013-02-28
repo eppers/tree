@@ -68,7 +68,7 @@
                                     jQuery(document).ready(function($) {
 
                                     $('#banner-fade').bjqs({
-                                        height      : 170,
+                                        height      : 138,
                                         width       : 375,
                                         responsive  : true,
                                         showcontrols : false,
@@ -78,6 +78,16 @@
 
                                     });
                                 </script>
+                                <div class="scrollingtext-container">
+                                    <div class="scrollingtext">
+                                        <ul>
+                                            <li>tuje</li>
+                                            <li>cis</li>
+                                            <li>drzewka iglaste</li>
+                                            <li>buk</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <div id="bottom">
                                 <h2>Szkółka drzewek i krzewów ozdobnych</h2>

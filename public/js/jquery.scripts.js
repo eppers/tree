@@ -2,6 +2,16 @@
 
 $(document).ready(function(){
 
+ $('.scrollingtext').bind('marquee', function() {
+        var ob = $(this);
+        var tw = ob.width();
+        var ww = ob.parent().width();
+        ob.css({ right: -tw });
+        ob.animate({ right: ww }, 20000, 'linear', function() {
+            ob.trigger('marquee');
+        });
+    }).trigger('marquee');
+
     $('span.slide-down').click(function(){
         var ulList = $(this).parent('.product-name').children('ul');
         ulList.toggle('slow',function(){

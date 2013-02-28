@@ -191,6 +191,30 @@ p#telephone-top span{
     overflow: hidden;
 }
 
+    div.scrollingtext-container{
+        position:relative;
+        height:30px;
+        width:100%;
+        display:block;
+        overflow:hidden;
+        background: #000;
+    }
+   .scrollingtext{
+        position:absolute;
+        white-space:nowrap;
+        font-family:Oswald, sans-serif;
+        font-size:14px;
+        font-weight:bold;
+        color:#fff;
+        line-height: 30px;
+    }
+    
+    div.scrollingtext-container ul li {
+        display: inline-block;
+        padding: 0 15px;
+        text-transform: uppercase;
+    }
+
 /* ============================= main content ====================== */
 
 #content-bg {
