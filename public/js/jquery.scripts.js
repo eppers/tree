@@ -5,7 +5,7 @@ $(document).ready(function(){
     $('span.slide-down').click(function(){
         var ulList = $(this).parent('.product-name').children('ul');
         ulList.toggle('slow',function(){
-		$('#cennik-container').tinyscrollbar();
+		$('#cennik-container').tinyscrollbar_update('relative');
                 var thisSpan = $(this).parent('.product-name').children('span.slide-down');
                 
                 if(ulList.is(':visible')) {
