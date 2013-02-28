@@ -306,7 +306,7 @@ p#telephone-top span{
 
 #cennik-container p {
     margin-top: 0;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     line-height: 30px;
 }
@@ -334,9 +334,10 @@ p#telephone-top span{
 }
 
 .product-name h4 {
+    font-size: 18px;
     display: inline-block;
     color: #bfd303;
-    padding-right: 25px;
+    padding-right: 20px;
     line-height: 30px;    
 }
 
@@ -353,26 +354,20 @@ p#telephone-top span{
 
 .product-name span.slide-down {
     display: inline-block;
-    width: 130px;
+    width: 100px;
     height: 30px;
     color: #8d8888;
     line-height: 30px;
     font-weight: bold;
-    background: #f4fccf url('../images/cennik-dropdown-arrow.jpg') 105px center no-repeat;
+    background: #f4fccf url('../images/cennik-dropdown-arrow.jpg') 85px center no-repeat;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     text-decoration: none;
     margin-left: 5px;
     cursor: pointer;
-}
-
-slider-linia {
-    background: #e4eeb6;
-}
-
-slier-suwak {
-    background: #f4fccf;
+    font-size: 18px;
+    padding-right: 10px;
 }
 
 .product-container ul {
