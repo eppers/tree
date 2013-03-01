@@ -515,6 +515,34 @@ p#telephone-top span{
     width: 100px;
 }
 
+/* ============================= uslugi ====================== */
+
+#main-container.uslugi {
+    text-align: left;
+    width: 647px;
+}
+
+
+#main-container.uslugi p{
+    margin-top: 30px;
+}
+
+#main-container.uslugi p.title{
+    color: #bed203;
+}
+
+#main-container.uslugi a {
+    color: #bed203;
+}
+
+#main-container.uslugi ul li{
+    font-size: 12px;
+    color: #7f7e7e;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    width: 100%;
+}
+
 /* ============================= transport ====================== */
 
 #main-container.transport {
@@ -672,6 +700,30 @@ input, select, textarea {
 	font:12px/14px Oswald, sans-serif;
 	color:#676666;
 
+}
+
+/* ============================= Drzewko Info ====================== */
+
+#main-container.drzewko-info {
+    text-align: left;
+    width: 647px;
+}
+
+
+#main-container.drzewko-info p{
+    margin-top: 30px;
+}
+
+#main-container.drzewko-info a, #main-container.drzewko-info span {
+    color: #bed203;
+}
+
+#main-container.drzewko-info ul li{
+    font-size: 12px;
+    color: #7f7e7e;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    width: 100%;
 }
 
 

@@ -46,6 +46,16 @@ $app->get('/galeria', function () use ($app) {
     $app->render('galeria.php');
 });
 
+$app->get('/uslugi', function () use ($app) {
+
+    $app->render('uslugi.php');
+});
+
+$app->get('/thuja_occ_danica', function () use ($app) {
+
+    $app->render('thuja_occ_danica.php');
+});
+
 /*
  * Wyświetlenie strone
  */

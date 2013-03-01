@@ -81,10 +81,16 @@
                                 <div class="scrollingtext-container">
                                     <div class="scrollingtext">
                                         <ul>
-                                            <li>tuje</li>
-                                            <li>cis</li>
-                                            <li>drzewka iglaste</li>
-                                            <li>buk</li>
+                                            <li>Smaragd</li>
+                                            <li>Jodła kaukaska</li>
+                                            <li>Kórnik</li>
+                                            <li>Brabant</li>
+                                            <li>Jodła koreańska</li>
+                                            <li>Conica</li>
+                                            <li>Blue Carpet</li>
+                                            <li>Cyprysik Lawsona 'Ivonne'</li>
+                                            <li>Kosodrzewina mughus</li>
+                                            <li>Sosna bośniacka</li>
                                         </ul>
                                     </div>
                                 </div>
