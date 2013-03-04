@@ -597,6 +597,14 @@ ul#transport-price li{
     line-height: 30px;  
 }
 
+/* ============================= galeria ====================== */
+
+#main-container.gallery {
+    text-align: left;
+    width: 647px;
+}
+
+
 /* ============================= kontakt ====================== */
 
 #main-container.kontakt {

@@ -8,12 +8,19 @@
 <link rel="stylesheet" href="/public/css/demo.css"></link>
 <link rel="stylesheet" href="/public/css/style.css"></link>
 
-<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<link href="/public/css/css_pirobox/style_1/style.css" rel="stylesheet" type="text/css" />
+
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/public/js/jquery-ui-1.8.2.custom.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 
 <script src="/public/js/bjqs-1.3.min.js"></script>
 <script src="/public/js/forms.js"></script>
 <script src="/public/js/googleMap.js"></script>
+<script src="/public/js/pirobox_extended.js"></script>
+
+
+
  
 <script src="/public/js/jquery.scripts.js"></script>
 </head>
