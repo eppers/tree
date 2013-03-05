@@ -52,8 +52,15 @@ $app->get('/uslugi', function () use ($app) {
 });
 
 $app->get('/szkolka-galeria', function () use ($app) {
-
-    $app->render('gallery.php');
+    
+    $fileArray = array();
+    
+    $dir = opendir('./public/images/gallery/thumbs/');
+    while(false !== ($file = readdir($dir)))
+    if($file != '.' && $file != '..') 
+    $fileArray[] = $file;
+    
+    $app->render('gallery.php', array('files'=>$fileArray));
 });
 
 $app->get('/thuja_occ_danica', function () use ($app) {

@@ -9,12 +9,9 @@
                         </h2>
                          <div>
                              <ul>
-                                 <li><a href="/public/images/gallery/1.png" rel="gallery"  class="pirobox_gall" title="Lights"><img src="/public/images/gallery/thumbs/1.png"  /></a></li>
-                                 <li><a href="/public/images/gallery/2.png" rel="gallery"  class="pirobox_gall" title="Lights"><img src="/public/images/gallery/thumbs/2.png"  /></a></li>
-                                 <li><a href="/public/images/gallery/3.png" rel="gallery"  class="pirobox_gall" title="Lights"><img src="/public/images/gallery/thumbs/3.png"  /></a></li>
-                                 <li><a href="/public/images/gallery/4.png" rel="gallery"  class="pirobox_gall" title="Lights"><img src="/public/images/gallery/thumbs/4.png"  /></a></li>
-                                 <li><a href="/public/images/gallery/5.png" rel="gallery"  class="pirobox_gall" title="Lights"><img src="/public/images/gallery/thumbs/5.png"  /></a></li>
-                                 <li><a href="/public/images/gallery/6.png" rel="gallery"  class="pirobox_gall" title="Lights"><img src="/public/images/gallery/thumbs/6.png"  /></a></li>
+                                 {% for file in files %}
+                                 <li><a href="/public/images/gallery/{{file}}" rel="gallery"  class="pirobox_gall" title=""><img src="/public/images/gallery/thumbs/{{file}}"  /></a></li>
+                                 {% endfor %}
                              </ul>
                          </div>
                     </div>

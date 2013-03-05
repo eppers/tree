@@ -604,6 +604,24 @@ ul#transport-price li{
     width: 647px;
 }
 
+#main-container.gallery ul {
+    width : 100%;
+}
+
+#main-container.gallery ul li {
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+    width: 195px;
+    background: #fff;
+    overflow: hidden;
+    text-align: center;
+}
+
+#main-container.gallery ul li img {
+    border: 5px solid #7f7e7e;
+    max-width: 185px;
+}
 
 /* ============================= kontakt ====================== */
 
