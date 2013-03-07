@@ -41,8 +41,8 @@
                     <ul>
                         <li><a href="./home">Strona główna</a></li>
                         <li><a href="./o-szkolce">O szkółce</a></li>
-                        <li><a href="./cennik">Oferta/cennik</a></li>
-                        <li><a href="./cennik">Porady</a></li>
+                        <li><a href="./cennik">Cennik krzewów</a></li>
+                        <li><a href="./cennik-uslugi">Cennik Usług</a></li>
                         <li><a href="http://allegro.pl/listing/user/listing.php?us_id=27977212" target="_blank">Allegro</a></li>
                         <li><a href="./kontakt">Kontakt</a></li>
                     </ul>

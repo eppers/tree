@@ -276,6 +276,12 @@ p#telephone-top span{
     text-align: justify;
 }
 
+.box-left-content a {
+    text-decoration: none;
+    border: 0px;
+    color: #659400;
+}
+
 .box-left-content a.more {
     margin-right: 10px;
     float: right;
@@ -618,9 +624,17 @@ ul#transport-price li{
     text-align: center;
 }
 
-#main-container.gallery ul li img {
-    border: 5px solid #7f7e7e;
+#main-container.gallery ul li a {
     max-width: 185px;
+    border: 5px solid #7f7e7e;
+    overflow: hidden;
+    height: 140px;
+    display: inline-block;
+}
+
+#main-container.gallery ul li img {
+    
+    
 }
 
 /* ============================= kontakt ====================== */
