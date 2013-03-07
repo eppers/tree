@@ -1,29 +1,29 @@
 {% extends 'layout.php' %}
 
-{% block page_title %}Thuja occ."Danica"{% endblock %}
+{% block page_title %}Choina kanadyjska "Nana"{% endblock %}
 {% block content %}
                   {% include 'left-boxes.php' %}
                     <div id="main-container" class="drzewko-info">
                         <h2>
-                            Thuja occ."Danica"
+                            Choina kanadyjska "Nana"
                         </h2>
                         <p>
-                            <span>Opis</span>: W wieku 10 lat osiąga 50-70 cm wysokości i 100-140 cm średnicy. Jest to odmiana
-                            zwarta, karłowa. Charakterystycznie pionowo i płasko ułożone pędy, wraz z wachlarzykowatymi
-                            rozgałęzieniami (układ książkowy), pokryte są soczysto zielonymi łuskami.
+                            <span>Opis</span>: Krzew wolno rosnący, dorastający do 1 m wys. i 1,5 m szer. przyrastający ok. 4 cm rocznie.
+                            Igły bardzo krótkie, jasnozielone. Pokrój kopulasty z wyraźnie zaznaczonym obniżonym środkiem z
+                            którego wyrastają pędy zwarte, ściśle przylegające do siebie, lekko zwisające o pięknym zielonym
+                            kolorze.
                         </p>
                         <p>
-                            <span>Występowanie</span>: W naturalnym środowisku tuje porastają Amerykę Północną oraz wschodnią Azję.
+                            <span>Występowanie</span>: Odmiana wyselekcjonowana w XIX w, częściej występująca pod nazwą T.c. Gracilis.
+                            Być może współcześnie jest uprawianych pod tą nazwą kilka podobnych do siebie selektów.
                         </p>
                         <p>
-                            <span>Uprawa</span>: Krzew ten lubi stanowiska słoneczne a gleby żyzne i wilgotne, o kwaśnym odczynie.
-                            Wymaga regularnego podlewania i nawożenia. Zimą igły lekko brązowieją, nie należy się tym
-                            martwić, gdyż wiosną wszystko wróci do normy.
+                            <span>Uprawa</span>: Lubi stanowiska osłonięte, słoneczne lub półcieniste. Wymaga żyznych i wilgotnych gleb.
+                            Polecana do ogrodów skalnych i na wrzosowiska.
                         </p>
                         <p>
-                            <span>Zastosowanie</span>: Pasuje do ogrodów skalnych, na balkony i tarasy, a także jako soliter. Doskonale
-                            nadaje się do każdego miejsca w ogrodzie np. na obwódki, rabaty oraz różnego rodzaju barwnych
-                            ogrodowych kompozycji.
+                            <span>Zastosowanie</span>: Idealny do ogrodów skalnych, na murki i swobodne nasadzenia lub do uprawy w
+                            pojemnikach.
                         </p>
                         <p>
                             <span>Strefa mrozoodporności</span>: 6a

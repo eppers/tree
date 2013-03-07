@@ -1,32 +1,31 @@
 {% extends 'layout.php' %}
 
-{% block page_title %}Thuja occ."Danica"{% endblock %}
+{% block page_title %}Chamaecyparis lawsoniana Cyprysik lawsona "Golden Wonder"{% endblock %}
 {% block content %}
                   {% include 'left-boxes.php' %}
                     <div id="main-container" class="drzewko-info">
                         <h2>
-                            Thuja occ."Danica"
+                            Chamaecyparis lawsoniana Cyprysik lawsona "Golden Wonder"
                         </h2>
                         <p>
-                            <span>Opis</span>: W wieku 10 lat osiąga 50-70 cm wysokości i 100-140 cm średnicy. Jest to odmiana
-                            zwarta, karłowa. Charakterystycznie pionowo i płasko ułożone pędy, wraz z wachlarzykowatymi
-                            rozgałęzieniami (układ książkowy), pokryte są soczysto zielonymi łuskami.
+                            <span>Opis</span>: Stożkowa odmiana, stosunkowo wolno rosnąca, osiągająca w wieku 10 lat do 2 m wys.
+                            Ulistnienie łuskowate, złocistożółte, zachowujące czystą barwę w okresie zimowym.
                         </p>
                         <p>
-                            <span>Występowanie</span>: W naturalnym środowisku tuje porastają Amerykę Północną oraz wschodnią Azję.
+                            <span>Występowanie</span>: Pierwotnie występował jedynie w zachodniej części Ameryki Północnej, w stanach
+                            Oregon i Kalifornia. Obecnie jest powszechnie sadzony w Europie jako drzewo ozdobne. Odmiana
+                            Golden Wonder powstała w Boskoop.
                         </p>
                         <p>
-                            <span>Uprawa</span>: Krzew ten lubi stanowiska słoneczne a gleby żyzne i wilgotne, o kwaśnym odczynie.
-                            Wymaga regularnego podlewania i nawożenia. Zimą igły lekko brązowieją, nie należy się tym
-                            martwić, gdyż wiosną wszystko wróci do normy.
+                            <span>Uprawa</span>: Wymaga dosyć żyznych i wilgotnych gleb. Cyprysik tej odmiany lubi stanowiska słoneczne i
+                            wilgotne gleby. W miejscach ocienionych traci swój kolor.
                         </p>
                         <p>
-                            <span>Zastosowanie</span>: Pasuje do ogrodów skalnych, na balkony i tarasy, a także jako soliter. Doskonale
-                            nadaje się do każdego miejsca w ogrodzie np. na obwódki, rabaty oraz różnego rodzaju barwnych
-                            ogrodowych kompozycji.
+                            <span>Zastosowanie</span>: Polecana do różnobarwnych kompozycji w zachodniej części Polski, nadaje się na
+                            formowane żywopłoty.
                         </p>
                         <p>
-                            <span>Strefa mrozoodporności</span>: 6a
+                            <span>Strefa mrozoodporności</span>: 7a
                         </p>
                     </div>
 {% endblock %}

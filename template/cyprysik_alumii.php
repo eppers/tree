@@ -1,32 +1,32 @@
 {% extends 'layout.php' %}
 
-{% block page_title %}Thuja occ."Danica"{% endblock %}
+{% block page_title %}Chamaecyparis lawsoniana Cyprysik lawsona "Alumii"{% endblock %}
 {% block content %}
                   {% include 'left-boxes.php' %}
                     <div id="main-container" class="drzewko-info">
                         <h2>
-                            Thuja occ."Danica"
+                            Chamaecyparis lawsoniana Cyprysik lawsona "Alumii"
                         </h2>
                         <p>
-                            <span>Opis</span>: W wieku 10 lat osiąga 50-70 cm wysokości i 100-140 cm średnicy. Jest to odmiana
-                            zwarta, karłowa. Charakterystycznie pionowo i płasko ułożone pędy, wraz z wachlarzykowatymi
-                            rozgałęzieniami (układ książkowy), pokryte są soczysto zielonymi łuskami.
+                            <span>Opis</span>: Drzewo o wąsko stożkowatym pokroju dorastające do 10 m wys. i przyrostach rocznych ok.
+                            20 cm. Gałązki wzniesione, płaskie, łuskowate, z nalotem woskowym powodującym srebrzysto-
+                            niebieskie zabarwienie. Po 10 latach osiąga około 3m wysokości.
                         </p>
                         <p>
-                            <span>Występowanie</span>: W naturalnym środowisku tuje porastają Amerykę Północną oraz wschodnią Azję.
+                            <span>Występowanie</span>: Pierwotnie występował jedynie w zachodniej części Ameryki Północnej, w stanach
+                            Oregon i Kalifornia. Obecnie jest powszechnie sadzony w Europie jako drzewo ozdobne.
                         </p>
                         <p>
-                            <span>Uprawa</span>: Krzew ten lubi stanowiska słoneczne a gleby żyzne i wilgotne, o kwaśnym odczynie.
-                            Wymaga regularnego podlewania i nawożenia. Zimą igły lekko brązowieją, nie należy się tym
-                            martwić, gdyż wiosną wszystko wróci do normy.
+                            <span>Uprawa</span>: najlepiej rośnie na żyznych, świeżych, umiarkowanie wilgotnych, przeciętnych glebach
+                            ogrodowych o odczynie lekko kwaśnym (pH około 6). Lubi słońce. Jest gatunkiem ciepłolubnym,
+                            wymagającym dość wysokiej wilgotności powietrza.
                         </p>
                         <p>
-                            <span>Zastosowanie</span>: Pasuje do ogrodów skalnych, na balkony i tarasy, a także jako soliter. Doskonale
-                            nadaje się do każdego miejsca w ogrodzie np. na obwódki, rabaty oraz różnego rodzaju barwnych
-                            ogrodowych kompozycji.
+                            <span>Zastosowanie</span>: Polecana do dużych ogrodów i parków w zachodniej części Polski, nadaje się na
+                            formowane żywopłoty.
                         </p>
                         <p>
-                            <span>Strefa mrozoodporności</span>: 6a
+                            <span>Strefa mrozoodporności</span>: 6b
                         </p>
                     </div>
 {% endblock %}
