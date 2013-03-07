@@ -172,6 +172,8 @@ p#telephone-top span{
     line-height: 26px;
 }
 
+
+
 #left-container p {
     font-size: 16px;
     color: #659400;
@@ -265,9 +267,14 @@ p#telephone-top span{
 }
 
 .box-left-content h3 {
-    display: inline-block;
+    display: block;
     margin-bottom: 2px;
-    font-size: 28px;
+    margin-top: 10px;
+}
+
+.box-left-content h3 a {
+    
+    font-size: 24px;
 }
 
 .box-left-content p {
@@ -292,6 +299,7 @@ p#telephone-top span{
     font-weight: bold;
     font-size: 10px;
     padding-right: 16px;
+    margin-top: 5px;
     background: url('../images/more.jpg') right center no-repeat;
 }
 
@@ -363,7 +371,7 @@ p#telephone-top span{
     display: inline-block;
     font-size: 20px;
     margin-top: 25px;
-    width: 400px;
+    width: 420px;
 }
 
 .product-name h4 {
@@ -411,7 +419,7 @@ p#telephone-top span{
 .product-container li {
     font-size: 16px;
     height: 19px;
-    width: 400px; /* px instead of 100% - the toogle animation looks better*/
+    width: 420px; /* px instead of 100% - the toogle animation looks better*/
     margin-bottom: 2px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -452,6 +460,8 @@ p#telephone-top span{
 
 .product-container ul li.name {
     width: 160px;
+    text-align: left;
+    padding-left: 5px;
 }
 
 .product-container ul li.lenght {
@@ -463,7 +473,7 @@ p#telephone-top span{
 }
 
 .product-container ul li.price {
-    width: 85px;
+    width: 90px;
 }
 
 /* ============================= cennik-uslugi ====================== */

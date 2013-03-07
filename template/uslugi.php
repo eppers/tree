@@ -47,7 +47,7 @@
                         </ul>
                         <p style="font-weight: bold;">
                             Szczegółowy informacje o cenach drzew i krzewów oraz cen usług znajdziecie Państwo w
-                            zakładce „<a href="/cennik-uslugi" title="Cennik usług">oferta/cennik</a>”.
+                            zakładce „<a href="/cennik-uslugi" title="Cennik usług">Cennik usług</a>”.
                         </p>
                         <p style="text-align: center; font-weight: bold;">
                             Zapraszamy do zapoznania się z ofertą<br />
