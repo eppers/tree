@@ -41,7 +41,8 @@
                     <ul>
                         <li><a href="./home">Strona główna</a></li>
                         <li><a href="./o-szkolce">O szkółce</a></li>
-                        <li><a href="./cennik">Oferta/cennik</a></li>
+                        <li><a href="./cennik">Cennik drzew</a></li>
+                        <li><a href="./cennik-uslugi">Cennik usług</a></li>
                         <li><a href="./cennik">Porady</a></li>
                         <li><a href="http://allegro.pl/listing/user/listing.php?us_id=27977212" target="_blank">Allegro</a></li>
                         <li><a href="./kontakt">Kontakt</a></li>
@@ -103,9 +104,8 @@
                                 </div>
                             </div>
                             <div id="bottom">
-                                <h2>Szkółka drzewek i krzewów ozdobnych</h2>
+                                <h2>Szkółka drzew i krzewów ozdobnych</h2>
                                 <p>Szymon i Tomasz Czudek</p>
-                                <p id="grey">Zapraszamy do odwiedzin</p>
                             </div>
                         </div>
                         <div id="right-container">

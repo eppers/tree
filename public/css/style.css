@@ -166,15 +166,17 @@ p#telephone-top span{
 }
 
 #left-container #bottom h2 {
-    padding-left: 30px;
-    padding-top: 15px;
-    line-height: 24px;
+    font-size: 26px;
+    padding-left: 0px;
+    padding-top: 25px;
+    line-height: 26px;
 }
 
 #left-container p {
     font-size: 16px;
     color: #659400;
-    padding-left: 30px;   
+    padding-top: 5px;
+    padding-left: 0px;   
 }
 
 #left-container p#grey {
@@ -265,6 +267,7 @@ p#telephone-top span{
 .box-left-content h3 {
     display: inline-block;
     margin-bottom: 2px;
+    font-size: 28px;
 }
 
 .box-left-content p {

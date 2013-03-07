@@ -5,7 +5,7 @@
                     {% include 'left-boxes.php' %}
                     <div id="main-container">
                         <h2>
-                            Cennik <span>(cena za m2)</span>
+                            Cennik <span>drzew i krzewów</span>
                         </h2>
                         <div id="cennik-container">
                             <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -13,7 +13,7 @@
                                 <div class="overview">
                                     <div class="product-container">
                                         <div class="img-container">
-                                            <img src="/public/images/cennik-drzewko.jpg" />
+                                            <img src="/public/images/cennik-zywotnik.jpg" />
                                         </div>
                                         <div class="product-name">
                                             <h4>THUJA – ŻYWOTNIK</h4>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="product-container">
                                         <div class="img-container">
-                                            <img src="/public/images/cennik-drzewko.jpg" />
+                                            <img src="/public/images/cennik-jalowiec.jpg" />
                                         </div>
                                         <div class="product-name">
                                             <h4>JUNIPERUS – JAŁOWIEC</h4>
@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="product-container">
                                         <div class="img-container">
-                                            <img src="/public/images/cennik-drzewko.jpg" />
+                                            <img src="/public/images/cennik-cyprysik.jpg" />
                                         </div>
                                         <div class="product-name">
                                             <h4>CHAMACYPARIS - CYPRYSIK</h4>
@@ -161,7 +161,7 @@
                                     </div>
                                      <div class="product-container">
                                         <div class="img-container">
-                                            <img src="/public/images/cennik-drzewko.jpg" />
+                                            <img src="/public/images/cennik-cis.jpg" />
                                         </div>
                                         <div class="product-name">
                                             <h4>TAXUS-CIS</h4>
@@ -181,7 +181,7 @@
                                     </div>
                                     <div class="product-container">
                                         <div class="img-container">
-                                            <img src="/public/images/cennik-drzewko.jpg" />
+                                            <img src="/public/images/cennik-choina.jpg" />
                                         </div>
                                         <div class="product-name">
                                             <h4>TSUGA-CHOINA</h4>
@@ -201,7 +201,7 @@
                                     </div>
                                     <div class="product-container">
                                         <div class="img-container">
-                                            <img src="/public/images/cennik-drzewko.jpg" />
+                                            <img src="/public/images/cennik-swierk.jpg" />
                                         </div>
                                         <div class="product-name">
                                             <h4>PICEA – ŚWIERK</h4>
