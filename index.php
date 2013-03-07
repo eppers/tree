@@ -1,8 +1,4 @@
 <?php 
-/*
- * Dodać do bazy tabelę GrupyWiadomości (User - > has many Grupy ; Grupy - > has many Wiadomości)
- * Tabela grupy zawiera Id gr , id user, title
- */
 
 session_start();
 //$_SESSION['user_id']=1;
@@ -20,10 +16,11 @@ require './lib/Paris/paris.php';
 
 // Models
 
-require './models/Site.php';
-require './models/Slider.php';
-require './models/Program.php';
-require './models/Pakiet.php';
+require './models/CennikDrzewkaCena.php';
+require './models/CennikDrzewkaGrupa.php';
+require './models/CennikDrzewkaProdukt.php';
+require './models/CennikUslugiRodzaj.php';
+require './models/Strona.php';
 
 
 

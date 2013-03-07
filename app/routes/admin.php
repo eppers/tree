@@ -1,11 +1,11 @@
 <?php
  
 $app->get('/admin/', function () use ($app) {
-    $app->redirect('/admin/sites/view');
+    $app->redirect('/admin/strony/view');
 });
 
-$app->get('/admin/sites/view', function () use ($admin) {
-    $sites=Model::factory('Site')->find_many();
+$app->get('/admin/strony/view', function () use ($admin) {
+    $sites=Model::factory('Strona')->find_many();
     $admin->render('/sites/all.php',array('sites'=>$sites));
 });
 
