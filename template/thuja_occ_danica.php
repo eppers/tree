@@ -1,11 +1,11 @@
 {% extends 'layout.php' %}
 
-{% block page_title %}Thuja occ."Danica"{% endblock %}
+{% block page_title %}Thuja occidentalis Żywotnik zachodni "Danica"{% endblock %}
 {% block content %}
                   {% include 'left-boxes.php' %}
                     <div id="main-container" class="drzewko-info">
                         <h2>
-                            Thuja occ."Danica"
+                            Thuja occidentalis Żywotnik zachodni "Danica"
                         </h2>
                         <p>
                             <span>Opis</span>: W wieku 10 lat osiąga 50-70 cm wysokości i 100-140 cm średnicy. Jest to odmiana

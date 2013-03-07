@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>{% block page_title %} {% endblock %}</title>
+<title>Szkółka drzew i krzewów ozdobnych - {% block page_title %} {% endblock %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="/public/css/reset.css"></link>
 <link rel="stylesheet" href="/public/css/bjqs.css"></link>
@@ -41,8 +41,9 @@
                     <ul>
                         <li><a href="./home">Strona główna</a></li>
                         <li><a href="./o-szkolce">O szkółce</a></li>
-                        <li><a href="./cennik">Cennik krzewów</a></li>
-                        <li><a href="./cennik-uslugi">Cennik Usług</a></li>
+                        <li><a href="./cennik">Cennik drzew</a></li>
+                        <li><a href="./cennik-uslugi">Cennik usług</a></li>
+                        <li><a href="./cennik">Porady</a></li>
                         <li><a href="http://allegro.pl/listing/user/listing.php?us_id=27977212" target="_blank">Allegro</a></li>
                         <li><a href="./kontakt">Kontakt</a></li>
                     </ul>
@@ -103,9 +104,8 @@
                                 </div>
                             </div>
                             <div id="bottom">
-                                <h2>Szkółka drzewek i krzewów ozdobnych</h2>
+                                <h2>Szkółka drzew i krzewów ozdobnych</h2>
                                 <p>Szymon i Tomasz Czudek</p>
-                                <p id="grey">Zapraszamy do odwiedzin</p>
                             </div>
                         </div>
                         <div id="right-container">

@@ -68,7 +68,65 @@ $app->get('/thuja_occ_danica', function () use ($app) {
     $app->render('thuja_occ_danica.php');
 });
 
+$app->get('/thuja_occ_aureospicata', function () use ($app) {
 
+    $app->render('thuja_occ_aureospicata.php');
+});
+
+$app->get('/thuja_occ_brabant', function () use ($app) {
+
+    $app->render('thuja_occ_brabant.php');
+});
+
+$app->get('/thuja_occ_colens_gold', function () use ($app) {
+
+    $app->render('thuja_occ_colens_gold.php');
+});
+
+$app->get('/thuja_occ_kornik', function () use ($app) {
+
+    $app->render('thuja_occ_kornik.php');
+});
+
+$app->get('/thuja_occ_smaragd', function () use ($app) {
+
+    $app->render('thuja_occ_smaragd.php');
+});
+
+$app->get('/choina_nana', function () use ($app) {
+
+    $app->render('choina_nana.php');
+});
+
+$app->get('/cis_hicksii', function () use ($app) {
+
+    $app->render('cis_hicksii.php');
+});
+
+$app->get('/cyprysik_alumii', function () use ($app) {
+
+    $app->render('cyprysik_alumii.php');
+});
+
+$app->get('/cyprysik_golden', function () use ($app) {
+
+    $app->render('cyprysik_golden.php');
+});
+
+$app->get('/jalowiec_blue_carpet', function () use ($app) {
+
+    $app->render('jalowiec_blue_carpet.php');
+});
+
+$app->get('/jalowiec_blue_star', function () use ($app) {
+
+    $app->render('jalowiec_blue_star.php');
+});
+
+$app->get('/swierk_conica', function () use ($app) {
+
+    $app->render('swierk_conica.php');
+});
 /*
  * Logowanie - wyświetlanie formularza
  */
