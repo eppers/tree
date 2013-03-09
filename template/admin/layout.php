@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Euro.net.pl - panel administracyjny</title>
+<title>Grasston.pl  - panel administracyjny</title>
 
         <link rel="stylesheet" href="/public/admin/css/screen.css" type="text/css" media="screen" title="default" />
 
@@ -167,25 +167,6 @@ $(document).pngFix( );
 			<a href="" id="logout"><img src="/public/admin/img/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
 			<div class="clear">&nbsp;</div>
 		
-			<!--  start account-content -->	
-			<div class="account-content">
-			<div class="account-drop-inner">
-				<a href="" id="acc-settings">Settings</a>
-				<div class="clear">&nbsp;</div>
-				<div class="acc-line">&nbsp;</div>
-				<a href="" id="acc-details">Personal details </a>
-				<div class="clear">&nbsp;</div>
-				<div class="acc-line">&nbsp;</div>
-				<a href="" id="acc-project">Project details</a>
-				<div class="clear">&nbsp;</div>
-				<div class="acc-line">&nbsp;</div>
-				<a href="" id="acc-inbox">Inbox</a>
-				<div class="clear">&nbsp;</div>
-				<div class="acc-line">&nbsp;</div>
-				<a href="" id="acc-stats">Statistics</a> 
-			</div>
-			</div>
-			<!--  end account-content -->
 		
 		</div>
 		<!-- end nav-right -->
@@ -201,7 +182,7 @@ $(document).pngFix( );
 			<ul class="sub">
                                 <li><a href="/admin/sites/view">Wszystkie</a></li>	
                                 {% for site in sites %}
-                                <li><a href="/admin/sites/edit/{{ site.id_site }}">{{ site.title }}</a></li>
+                                <li><a href="/admin/sites/edit/{{ site.id_strony }}">{{ site.tytul }}</a></li>
                                 {% endfor %}
 			</ul>
 		</div>
@@ -211,12 +192,12 @@ $(document).pngFix( );
 		
 		<div class="nav-divider">&nbsp;</div>
 		                    
-		<ul class="select"><li><a href="/admin/slider/view"><b>Slider</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<ul class="select"><li><a href=""><b>Cenniki</b></a><!--[if IE 7]><!--><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub">
 			<ul class="sub">
-				<li><a href="/admin/slider/view">Wyświetl listę</a></li>
-				<li><a href="/admin/slider/add">Dodaj nowy</a></li>
+				<li><a href="/admin/drzewka/lista">Cennik drzew</a></li>
+				<li><a href="/admin/uslugi/lista">Cernnik uslug</a></li>
 			</ul>
 		</div>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -225,11 +206,12 @@ $(document).pngFix( );
 		
 		<div class="nav-divider">&nbsp;</div>
 		
-		<ul class="select"><li><a href="/admin/tv/pakiet"><b>Telewizje</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<ul class="select"><li><a href="/admin/galeria/lista"><b>Galeria</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub">
 			<ul class="sub">
-				<li><a href="/admin/tv/pakiet">Pakiety</a></li>
+				<li><a href="/admin/galeria/lista">Wyświetl listę</a></li>
+                                <li><a href="/admin/galeria/dodaj">Dodaj zdjęcie</a></li>
 			</ul>
 		</div>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->

@@ -5,6 +5,8 @@
  * and open the template in the editor.
  */
 
+
+
 class CennikDrzewkaCena extends Model{
         
     public static $_table = 'cennik_drzewka_ceny';

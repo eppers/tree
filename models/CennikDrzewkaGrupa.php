@@ -5,11 +5,16 @@
  * and open the template in the editor.
  */
 
+
+
 class CennikDrzewkaGrupa extends Model{
         
     public static $_table = 'cennik_drzewka_grupy';
     public static $_id_column = 'id_cennik_drzewka_grupy';
     
+    public function produkt() {
+        return $this->has_many('CennikDrzewkaProdukt', 'id_cennik_drzewka_grupy'); // Note we use the model name literally - not a pluralised version
+    }
    
     public static function getGroupMessages($orm, $id) {
         return $orm->where('idMessageGroup', $id)->order_by_desc('idMessage');

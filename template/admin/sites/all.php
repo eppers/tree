@@ -1,6 +1,6 @@
 {% extends 'layout.php' %}
 
-{% block page_title %}Internet przewody{% endblock %}
+{% block page_title %}Lista stron{% endblock %}
 {% block content %} 
 <!-- start content-outer ........................................................................................................................START -->
 <div id="content-outer">
@@ -43,10 +43,10 @@
                            {% for site in sites %}
 				<tr {% if loop.index is divisibleby(2) %} class="alternate-row" {% endif %} >
 					<td><input  type="checkbox"/></td>
-					<td>{{ site.id_site }}</td>
-					<td>{{ site.title }}</td>
+					<td>{{ site.id_strony }}</td>
+					<td>{{ site.tytul }}</td>
 					<td class="options-width">
-					<a href="/admin/sites/edit/{{ site.id_site }}" title="Edit" class="icon-1 info-tooltip"></a>
+					<a href="/admin/sites/edit/{{ site.id_strony }}" title="Edit" class="icon-1 info-tooltip"></a>
 					</td>
 				</tr>
                         {% else %}  

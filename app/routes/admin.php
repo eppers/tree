@@ -4,13 +4,18 @@ $app->get('/admin/', function () use ($app) {
     $app->redirect('/admin/strony/view');
 });
 
+
+/*
+ * Strony ......................................................................
+ */
+
 $app->get('/admin/strony/view', function () use ($admin) {
     $sites=Model::factory('Strona')->find_many();
     $admin->render('/sites/all.php',array('sites'=>$sites));
 });
 
 $app->post('/admin/sites/view', function () use ($admin) {
-    $sites=Model::factory('Site')->find_many();
+    $sites=Model::factory('Strona')->find_many();
     $admin->render('/sites/all.php',array('sites'=>$sites));    
 });
 
@@ -62,20 +67,72 @@ $app->post('/admin/sites/delete/:id', function ($id) use ($admin) {
 });
 
 /*
- * Slider wyswietla wszystkie strony
+ * Cennik drzewka ......................................................................
  */
-$app->get('/admin/slider/view', function () use ($admin) {
-    $slider=Model::factory('Slider')->find_many();
-    $admin->render('/slider/all.php',array('slider'=>$slider));
+$app->get('/admin/drzewka/lista', function () use ($admin) {
+    $tabCennik = array();
+    $tabGrupy = array();
+    $tabProdukty = array();
+    $tabCeny = array();
+    
+    $grupy = Model::factory('CennikDrzewkaGrupa')->order_by_asc('pozycja')->find_many();
+    
+    foreach($grupy as $grupa) {
+        
+        if($grupa instanceof CennikDrzewkaGrupa) {
+
+            $produkty = $grupa->produkt()->order_by_asc('pozycja')->find_many();
+            
+            foreach( $produkty as $produkt ) {
+                if($produkt instanceof CennikDrzewkaProdukt) {
+                            
+                    $ceny = $produkt->cena()->find_many();
+                  //   print_r($tabProdukty['nazwa']);
+                    foreach($ceny as $cena){
+                        if($cena instanceof CennikDrzewkaCena) {
+                          
+                              $tabTemp['id_cena']=$cena->id_cennik_drzewka_ceny;
+                              $tabTemp['wysokosc'] = $cena->wysokosc;
+                              $tabTemp['rozmiar'] = $cena->rozmiar;
+                              $tabTemp['cena'] = $cena->cena;
+                              $tabTemp['nazwa_produktu']=$produkt->nazwa;
+                              $tabTemp['pozycja_produktu']=$produkt->pozycja;
+                              $tabTemp['id_prod']=$produkt->id_cennik_drzewka_produkty;
+                              $tabTemp['nazwa_grupy'] = $grupa->nazwa;
+                              $tabTemp['id_gr'] = $grupa->id_cennik_drzewka_grupy;
+                              
+                              $tabCennik[]=$tabTemp;
+                              
+                        }
+                        
+                    }
+                   
+                  
+                }
+                
+            }
+            
+        }
+    }
+
+
+
+    $admin->render('/drzewka/cennik_lista.php',array('cennik'=>$tabCennik));
 });
 
 /*
- * Slider edycja
+ * Drzewka - dodaj kategorie
  */
-$app->get('/admin/slider/edit/:id', function ($id) use ($admin) {
-    $slide=Model::factory('Slider')->find_one($id);
 
-    $admin->render('/slider/view.php',array('position'=>$slide->position, 'link'=>$slide->link, 'alt'=>$slide->alt, 'obrazek'=>$slide->img, 'aktywny'=>$slide->active, 'id'=>$id, 'form'=>'edit'));
+
+/*
+ * Drzewka - edytuj produkt
+ */
+$app->get('/admin/drzewka/produkt/edytuj/:id', function ($id) use ($admin) {
+    $produkt=Model::factory('CennikDrzewkaProdukt')->find_one($id);
+    $grupy=Model::factory('CennikDrzewkaGrupa')->find_many();
+
+    $admin->render('/drzewka/cennik_edycja.php',array('nazwa'=>$produkt->nazwa, 'pozycja'=>$produkt->pozycja, 'idGrupy'=>$produkt->id_drzewka_cennik_grupy, 'grupy'=>$grupy, 'form'=>'edit'));
 });
 
 
@@ -198,6 +255,12 @@ $app->post('/admin/slider/add', function () use ($admin) {
     $admin->render('/slider/view.php', array('position'=>$slide->position, 'link'=>$slide->link,'obrazek'=>$slide->img, 'alt'=>$slide->alt, 'aktywny'=>$slide->active, 'sites'=>$sites, 'form'=>'add', 'error'=>$error));
 
 });
+
+
+/*
+ * Cennik uslugi ......................................................................
+ */
+
 
 $app->get('/admin/tv/pakiet', function () use ($admin) {
     
