@@ -38,7 +38,7 @@
                                                 <br>
                                                 <label class="phone">
                                                                     <input type="tel" value="Telefon:">
-                                                                    <span class="error">*This is not a valid phone number.</span> <span class="empty">*To pole jest wymagane.</span> </label>
+                                                                    <span class="error">*To nie jest poprawny numer telefonu.</span> <span class="empty">*To pole jest wymagane.</span> </label>
                                                 <br>
                                                 <label class="message">
                                                         <textarea>Wiadmość:</textarea>

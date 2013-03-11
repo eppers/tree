@@ -10,7 +10,7 @@
 					notRequiredCl:'notRequired',
 					successCl:'success',
 					successShow:'4000',
-					mailHandlerURL:'bat/MailHandler.php',
+					mailHandlerURL:'/lib/MailHandler.php',
 					ownerEmail:'eppers.m@gmail.com',
 					stripHTML:true,
 					smtpMailServer:'localhost',
@@ -182,6 +182,6 @@
 })(jQuery)
 $(window).load(function(){
 	$('#form1').forms({
-		ownerEmail:'#'
+		ownerEmail:'eppers.m@gmail.com'
 	})
 })
