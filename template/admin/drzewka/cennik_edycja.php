@@ -7,7 +7,7 @@
 <div id="content">
 
 
-<div id="page-heading"><h1>{% if form=='edit' %}Edytuj{% else %}Add{% endif %} produkt</h1></div>
+<div id="page-heading"><h1>{% if form=='edit' %}Edytuj{% else %}Dodaj{% endif %} produkt</h1></div>
 
 
 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
@@ -31,50 +31,42 @@
             {% include 'error.php' %}
         {% endif %}
 		<!-- start id-form -->
-   <form name="site-form" action="{% if form=='edit' %}/admin/drzewka/produkt/edytuj/{{produkt.id_drzewka_cennik_produkty}} {% else %} /admin/drzewka/produkt/dodaj {% endif %}" method="post" enctype="multipart/form-data">        
+   <form name="site-form" action="{% if form=='edit' %}/admin/drzewka/produkt/edytuj/{{cena.id_cennik_drzewka_ceny}} {% else %} /admin/drzewka/produkt/dodaj {% endif %}" method="post" enctype="multipart/form-data">        
        
        
         <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
-            {% if form=='add' %}
-                <tr>
-                    <th valign="top">Wybierz jeden z dodanych już programów:</th>
-                    <td>	
-                    <select name="program-select" class="styledselect_form_1">
-                            <option value="">wybierz program</option>
-                        {% for program in programy %}
-                            <option value="{{ id_drzewka_cennik_produkty }}">{{ produkt.nazwa }}</option>
-                        {% endfor %}
-                    </select>
-                    </td>
-                    <td></td>
-		</tr> 
-                <tr><td colspan="2" style="line-height: 40px; text-align: center; font-size: 13px; font-weight: bold;">lub wprowadź nowy</td></tr>
-           {% endif %}
-           
                 <tr>
                     <th valign="top">Nazwa:</th>
-                    <td><input type="text" name="name" class="inp-form" value="{{nazwa}}"/></td>
-                    <td></td>
-                </tr>	
-                <tr>
-                    <th valign="top">Pozycja:</th>
-                    <td><input type="text" name="name" class="inp-form" value="{{pozycja}}"/></td>
-                    <td></td>
-                </tr>	
-                <tr>
-                    <th valign="top">Grupa:</th>
                     <td>
                         <div class="control-group">
-                                <select id="selectError" data-rel="chosen">
-                                    {% for grupa in grupy %}
-                                    <option value="{{ grupa.id_cennik_drzewka_grupy }}" {% if grupa.id_cennik_drzewka_grupy==idGrupy %} selected {% endif %} >{{ grupa.nazwa }}</option>
+                            <select id="selectError" data-rel="chosen" name="idProd">
+                                    {% for produkt in produkty %}
+                                    <option value="{{ produkt.id_cennik_drzewka_produkty }}" {% if produkt.id_cennik_drzewka_produkty==cena.id_cennik_drzewka_produkty %} selected {% endif %} >{{ produkt.nazwa }}</option>
                                     {% endfor %}
-                                </select>
-                            </div>
+                            </select>
                         </div>
                     </td>
+                </tr>	
+                <tr>
+                    <th valign="top">Wysokość:</th>
+                    <td><input type="text" name="wysokosc" class="inp-form" value="{{cena.wysokosc}}"/></td>
                     <td></td>
                 </tr>
+                <tr>
+                    <th valign="top">Rozmiar:</th>
+                    <td><input type="text" name="rozmiar" class="inp-form" value="{{cena.rozmiar}}"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th valign="top">Cena:</th>
+                    <td><input type="text" name="cena" class="inp-form" value="{{cena.cena}}"/></td>
+                    <td></td>
+                </tr>        
+                <tr>
+                    <th valign="top">Pozycja:</th>
+                    <td><input type="text" name="pozycja" class="inp-form" value="{{cena.pozycja}}"/></td>
+                    <td></td>
+                </tr>	
                 <tr>
                     <th>&nbsp;</th>
                     <td valign="top">

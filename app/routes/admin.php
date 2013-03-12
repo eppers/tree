@@ -86,7 +86,7 @@ $app->get('/admin/drzewka/lista', function () use ($admin) {
             foreach( $produkty as $produkt ) {
                 if($produkt instanceof CennikDrzewkaProdukt) {
                             
-                    $ceny = $produkt->cena()->find_many();
+                    $ceny = $produkt->cena()->order_by_asc('pozycja')->find_many();
                   //   print_r($tabProdukty['nazwa']);
                     foreach($ceny as $cena){
                         if($cena instanceof CennikDrzewkaCena) {
@@ -97,6 +97,7 @@ $app->get('/admin/drzewka/lista', function () use ($admin) {
                               $tabTemp['cena'] = $cena->cena;
                               $tabTemp['nazwa_produktu']=$produkt->nazwa;
                               $tabTemp['pozycja_produktu']=$produkt->pozycja;
+                              $tabTemp['pozycja_cena']=$cena->pozycja;
                               $tabTemp['id_prod']=$produkt->id_cennik_drzewka_produkty;
                               $tabTemp['nazwa_grupy'] = $grupa->nazwa;
                               $tabTemp['id_gr'] = $grupa->id_cennik_drzewka_grupy;
@@ -129,130 +130,96 @@ $app->get('/admin/drzewka/lista', function () use ($admin) {
  * Drzewka - edytuj produkt
  */
 $app->get('/admin/drzewka/produkt/edytuj/:id', function ($id) use ($admin) {
-    $produkt=Model::factory('CennikDrzewkaProdukt')->find_one($id);
-    $grupy=Model::factory('CennikDrzewkaGrupa')->find_many();
+    $cena=Model::factory('CennikDrzewkaCena')->find_one($id);
+    $produkt=$cena->produkt()->find_one();
+    
+    $produkty=Model::factory('CennikDrzewkaProdukt')->find_many();
 
-    $admin->render('/drzewka/cennik_edycja.php',array('nazwa'=>$produkt->nazwa, 'pozycja'=>$produkt->pozycja, 'idGrupy'=>$produkt->id_drzewka_cennik_grupy, 'grupy'=>$grupy, 'form'=>'edit'));
+    $admin->render('/drzewka/cennik_edycja.php',array('produkty'=>$produkty, 'cena'=>$cena, 'idGrupy'=>$produkt->id_drzewka_cennik_grupy, 'form'=>'edit'));
 });
 
 
 /*
- * Slider edycja POST
+ * Drzewka edycja POST
  */
-$app->post('/admin/slider/edit/:id', function ($id) use ($admin) {
-    $sites=Model::factory('Site')->find_many();
-    $slide=Model::factory('Slider')->find_one($id);         
+$app->post('/admin/drzewka/produkt/edytuj/:id', function ($id) use ($admin) {
+
+    $cena=Model::factory('CennikDrzewkaCena')->find_one($id);
+    $produkt=$cena->produkt()->find_one();
     
- //   print_r($_FILES);
-    if($slide instanceof Slider) {
-        $slide->position   = $admin->app->request()->post('position');
-        $slide->link   = $admin->app->request()->post('link');
-        $slide->alt  = $admin->app->request()->post('alt');
-        $slide->active  = $admin->app->request()->post('active');
+    $produkty=Model::factory('CennikDrzewkaProdukt')->find_many();
+ 
         
-        if (isset($_FILES['file'])) {
+    
+    if($cena instanceof CennikDrzewkaCena) {
+        $cena->id_drzewka_cennik_produkty =  $admin->app->request()->post('idProd');
+        $cena->wysokosc =  $admin->app->request()->post('wysokosc');
+        $cena->rozmiar =  $admin->app->request()->post('rozmiar');
+        $cena->cena =  $admin->app->request()->post('cena');
+        $cena->pozycja =  $admin->app->request()->post('pozycja');
+        
+        if($produkt instanceof CennikDrzewkaProdukt) {
+            
+                $cena->save();
 
-            $error = $slide->setImage($_FILES);
-
-            if($error['status']==1) {
-                    $admin->render('/slider/view.php', array('position'=>$slide->position, 'link'=>$slide->link,'obrazek'=>$slide->img, 'alt'=>$slide->alt, 'aktywny'=>$slide->active, 'sites'=>$sites, 'id'=>$id, 'form'=>'edit', 'error'=>$error));
-                exit();
-            } else {
-
-            $slide->img  = $error['uploaded_file'];
-
-            }
-
+                $error['status']='0';
+                $error['msg']='Produkt został wyedytowany poprawie';
+            
         } else {
-
-            $slide->img  = $admin->app->request()->post('obrazek');
+            $error['status']='1';
+            $error['msg']='Coß poszło nie tak. Spróbuj ponownie.';
         }
-
         
-
-        $slide->save();
-
-        $error['status']='0';
-        $error['msg']='Slider został wyedytowany poprawie';
-        
-        //Generowanie nowego pliku slidera
-        $slider = Model::factory('Slider')->where('active',1)->find_many();
-        $slide->generateSlider($slider);
-        
-    }
-    else {
+    } else {
         $error['status']='1';
-        $error['msg']='Slider NIE został wyedytowany poprawnie. Spróbuj ponownie.';
+        $error['msg']='Coß poszło nie tak. Spróbuj ponownie.';
     }
     
-
-   
-
-    $admin->render('/slider/view.php', array('position'=>$slide->position, 'link'=>$slide->link,'obrazek'=>$slide->img, 'alt'=>$slide->alt, 'aktywny'=>$slide->active, 'sites'=>$sites, 'id'=>$id, 'form'=>'edit', 'error'=>$error));
+    $admin->render('/drzewka/cennik_edycja.php', array('produkty'=>$produkty, 'cena'=>$cena, 'form'=>'edit', 'error'=>$error));
 
 });
 
 
 /*
- * Dodawanie slidera
+ * Drzewka dodawanie ceny do produktu (rodzaju)
  */
-$app->get('/admin/slider/add', function () use ($admin) {
-    $admin->render('/slider/view.php',array('form'=>'add'));
+$app->get('/admin/drzewka/produkt/dodaj', function () use ($admin) {
+    
+    $produkty=Model::factory('CennikDrzewkaProdukt')->find_many();
+
+    $admin->render('/drzewka/cennik_edycja.php',array('produkty'=>$produkty, 'form'=>'add'));
 });
 
-$app->post('/admin/slider/add', function () use ($admin) {
-    $sites=Model::factory('Site')->find_many();
-    
-    $position = Model::factory('Slider')->where('position',$admin->app->request()->post('position'))->find_one();
-    
-    if($position instanceof Slider) {
-        $error['status']='1';
-        $error['msg']='Slide o takiej pozycji już istnieje';
+$app->post('/admin/drzewka/produkt/dodaj', function () use ($admin) {
         
-        $admin->render('/slider/view.php', array('position'=>$admin->app->request()->post('position'), 'link'=>$admin->app->request()->post('link'), 'alt'=>$admin->app->request()->post('alt'), 'aktywny'=>$admin->app->request()->post('active'), 'sites'=>$sites, 'form'=>'add', 'error'=>$error));
+    $produkt=Model::factory('CennikDrzewkaProdukt')->find_one($admin->app->request()->post('idProd'));
+    
+    $produkty=Model::factory('CennikDrzewkaProdukt')->find_many();
+    
+       
+    if($produkt instanceof CennikDrzewkaProdukt) {
+            $cena = Model::factory('CennikDrzewkaCena')->create();
+            $cena->id_cennik_drzewka_produkty =  $admin->app->request()->post('idProd');
+            $cena->wysokosc =  $admin->app->request()->post('wysokosc');
+            $cena->rozmiar =  $admin->app->request()->post('rozmiar');
+            $cena->cena =  $admin->app->request()->post('cena');
+            $cena->pozycja =  $admin->app->request()->post('pozycja');
+            
+            $cena->save();
+            $error['status']='0';
+            $error['msg']='Produkt został dodany pomyślnie';
+    } else {
+        $error['status']='1';
+        $error['msg']='Coś poszło nie tak. Spróbuj ponownie.';
+            
+        $admin->render('/drzewka/cennik_edycja.php', array('produkty'=>$produkty, 'form'=>'add', 'error'=>$error));
         exit();
     }
     
-    $slide = Model::factory('Slider')->create();
-    $slide->position   = $admin->app->request()->post('position');
-    $slide->link   = $admin->app->request()->post('link');
-    $slide->alt  = $admin->app->request()->post('alt');
-    $slide->active  = $admin->app->request()->post('active');
+    $cena->id_cennik_drzewka_ceny=$cena->id();
     
 
-        
-    if (isset($_FILES['file'])) {
-
-        $error = $slide->setImage($_FILES);
-
-        if($error['status']==1) {
-                $admin->render('/slider/view.php', array('position'=>$admin->app->request()->post('position'), 'link'=>$admin->app->request()->post('link'), 'alt'=>$admin->app->request()->post('alt'), 'aktywny'=>$admin->app->request()->post('active'), 'sites'=>$sites, 'form'=>'add', 'error'=>$error));
-            exit();
-        } else {
-
-
-        $slide->img  = $error['uploaded_file'];
-        $slide->save();
-        $error['status']='0';
-        $error['msg']='Slide został dodany pomyślnie';
-        
-        //Generowanie nowego pliku slidera
-        $slider = Model::factory('Slider')->where('active',1)->find_many();
-        $slide->generateSlider($slider);
-
-        }
-
-    } else {
-
-    $error['status']='1';
-    $error['msg']='Plik nie został wysłany';
-
-    }
-    
-
-   
-
-    $admin->render('/slider/view.php', array('position'=>$slide->position, 'link'=>$slide->link,'obrazek'=>$slide->img, 'alt'=>$slide->alt, 'aktywny'=>$slide->active, 'sites'=>$sites, 'form'=>'add', 'error'=>$error));
+    $admin->render('/drzewka/cennik_edycja.php', array('produkty'=>$produkty, 'cena'=>$cena, 'form'=>'edit', 'error'=>$error));
 
 });
 

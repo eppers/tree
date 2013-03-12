@@ -16,6 +16,10 @@ class CennikDrzewkaProdukt extends Model{
         return $this->has_many('CennikDrzewkaCena', 'id_cennik_drzewka_produkty'); // Note we use the model name literally - not a pluralised version
     }
     
+    public function grupa() {
+        return $this->belongs_to('CennikDrzewkaGrupa', 'id_cennik_drzewka_grupy'); // Note we use the model name literally - not a pluralised version
+    }
+    
     public static function getGroupMessages($orm, $id) {
         return $orm->where('idMessageGroup', $id)->order_by_desc('idMessage');
     }

@@ -13,6 +13,10 @@ class CennikDrzewkaCena extends Model{
     public static $_id_column = 'id_cennik_drzewka_ceny';
     
    
+    public function produkt() {
+        return $this->belongs_to('CennikDrzewkaProdukt', 'id_cennik_drzewka_produkty');
+    }
+    
     public static function getGroupMessages($orm, $id) {
         return $orm->where('idMessageGroup', $id)->order_by_desc('idMessage');
     }
