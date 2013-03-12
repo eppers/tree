@@ -9,10 +9,10 @@
 
 	<!--  start page-heading -->
 	<div id="page-heading">
-		<h1>Cennik drzewka</h1>
+		<h1>Rodzaje drzew</h1>
 	</div>
 	<!-- end page-heading -->
-        <a href="/admin/drzewka/dodaj" id="add-program" class="btn btn-large btn-primary">Dodaj produkt</a>
+        <a href="/admin/drzewka/rodzaj/dodaj" id="add-program" class="btn btn-large btn-primary">Dodaj rodzaj</a>
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
 		<th rowspan="3" class="sized"><img src="/public/admin/img/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
@@ -37,24 +37,18 @@
 				<tr>
 					<th class="table-header-check"><a id="toggle-all" ></a> </th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Nazwa grupy</a></th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Nazwa produktu</a></th>
-                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Wysokość</a></th>
-                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Rozmiar</a></th>
-                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Cena</a></th>
-                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Pozycja produktu</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Nazwa rodzaju</a></th>
+                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Pozycja Rodzaju</a></th>
                                         <th class="table-header-options line-left"><a href="">Options</a></th>
 				</tr>
-                           {% for produkt in cennik %}
+                           {% for produkt in produkty %}
                             <tr {% if loop.index is divisibleby(2) %} class="alternate-row" {% endif %} >
                                     <td><input  type="checkbox"/></td>
                                     <td>{{ produkt.nazwa_grupy }}</td>
                                     <td>{{ produkt.nazwa_produktu }}</td>
-                                    <td>{{ produkt.wysokosc }}</td>
-                                    <td>{{ produkt.rozmiar }}</td>
-                                    <td>{{ produkt.cena }}</td>
-                                    <td>{{ produkt.pozycja_cena }}</td>
+                                    <td>{{ produkt.pozycja_produktu }}</td>
                                     <td class="options-width">
-                                    <a href="/admin/drzewka/produkt/edytuj/{{ produkt.id_cena }}" title="Edit" class="icon-1 info-tooltip"></a>
+                                    <a href="/admin/drzewka/rodzaj/edytuj/{{ produkt.id_prod }}" title="Edit" class="icon-1 info-tooltip"></a>
                                     </td>
                             </tr>
                             {% else %}  
@@ -69,6 +63,7 @@
 			<!--  end content-table  -->
 		
 	
+			
 			<div class="clear"></div>
 		 
 		</div>

@@ -197,6 +197,8 @@ $(document).pngFix( );
 		<div class="select_sub">
 			<ul class="sub">
 				<li><a href="/admin/drzewka/lista">Cennik drzew</a></li>
+                                <li><a href="/admin/drzewka/rodzaj/lista">Rodzaje drzew</a></li>
+                                <li><a href="/admin/drzewka/grupa/lista">Grupy drzew</a></li>
 				<li><a href="/admin/uslugi/lista">Cernnik uslug</a></li>
 			</ul>
 		</div>

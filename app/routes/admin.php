@@ -1,5 +1,11 @@
 <?php
  
+/*
+ * TODO: przy dodawaniu grup(kategorii) mozliwosc dodawania zdjecia z boku - zmienic domyslny rozmiar obrazka i wyskalowac
+ * Usuwanie produktow, rodzajow, grup
+ * 
+ */
+
 $app->get('/admin/', function () use ($app) {
     $app->redirect('/admin/strony/view');
 });
@@ -122,9 +128,139 @@ $app->get('/admin/drzewka/lista', function () use ($admin) {
 });
 
 /*
- * Drzewka - dodaj kategorie
+ * Drzewka - dodaj grupę(kategorie)
  */
+$app->get('/admin/drzewka/grupy/edytuj/:id', function ($id) use ($admin) {
+    $grupa=Model::factory('CennikDrzewkaGrupa')->find_one($id);
+    //edycja obrazkow
+    $admin->render('/drzewka/cennik_edycja.php',array('produkty'=>$produkty, 'cena'=>$cena, 'idGrupy'=>$produkt->id_drzewka_cennik_grupy, 'form'=>'edit'));
+});
 
+
+/*
+ * Drzewka - lista rodzajów
+ */
+$app->get('/admin/drzewka/rodzaj/lista', function () use ($admin) {
+    $tabCennik = array();
+    $tabGrupy = array();
+    $tabProdukty = array();
+    
+    $grupy = Model::factory('CennikDrzewkaGrupa')->order_by_asc('pozycja')->find_many();
+    
+    foreach($grupy as $grupa) {
+        
+        if($grupa instanceof CennikDrzewkaGrupa) {
+
+            $produkty = $grupa->produkt()->order_by_asc('pozycja')->find_many();
+            
+            foreach( $produkty as $produkt ) {
+                if($produkt instanceof CennikDrzewkaProdukt) {
+                            
+                    $tabTemp['nazwa_produktu']=$produkt->nazwa;
+                    $tabTemp['pozycja_produktu']=$produkt->pozycja;
+                    $tabTemp['id_prod']=$produkt->id_cennik_drzewka_produkty;
+                    $tabTemp['nazwa_grupy'] = $grupa->nazwa;
+                    $tabTemp['id_gr'] = $grupa->id_cennik_drzewka_grupy;
+
+                    $tabCennik[]=$tabTemp;
+                  
+                }
+                
+            }
+            
+        }
+    }
+
+
+
+    $admin->render('/drzewka/cennik_rodzaj_lista.php',array('produkty'=>$tabCennik));
+});
+
+/*
+ * Drzewka - dodaj rodzaj
+ */
+$app->get('/admin/drzewka/rodzaj/dodaj', function () use ($admin) {
+    
+    $grupy=Model::factory('CennikDrzewkaGrupa')->find_many();
+
+    $admin->render('/drzewka/cennik_rodzaj_edycja.php',array('grupy'=>$grupy, 'form'=>'add'));
+});
+
+$app->post('/admin/drzewka/rodzaj/dodaj', function () use ($admin) {
+        
+    $grupa=Model::factory('CennikDrzewkaGrupa')->find_one($admin->app->request()->post('idGr'));
+    
+    $grupy=Model::factory('CennikDrzewkaGrupa')->find_many();
+    
+       
+    if($grupa instanceof CennikDrzewkaGrupa) {
+            $produkt = Model::factory('CennikDrzewkaProdukt')->create();
+            $produkt->id_cennik_drzewka_grupy =  $admin->app->request()->post('idGr');
+            $produkt->nazwa =  $admin->app->request()->post('nazwa');
+            $produkt->pozycja =  $admin->app->request()->post('pozycja');
+            
+            $produkt->save();
+            $error['status']='0';
+            $error['msg']='Rodzaj został dodany pomyślnie';
+    } else {
+        $error['status']='1';
+        $error['msg']='Coś poszło nie tak. Spróbuj ponownie.';
+            
+        $admin->render('/drzewka/cennik_rodzaj_edycja.php', array('grupy'=>$grupy, 'form'=>'add', 'error'=>$error));
+        exit();
+    }
+    
+    $produkt->id_cennik_drzewka_produkty=$produkt->id();
+    
+
+    $admin->render('/drzewka/cennik_rodzaj_edycja.php', array('grupy'=>$grupy, 'produkt'=>$produkt, 'form'=>'edit', 'error'=>$error));
+
+});
+
+/*
+ * Drzewka - edytuj rodzaj
+ */
+$app->get('/admin/drzewka/rodzaj/edytuj/:id', function ($id) use ($admin) {
+    $produkt=Model::factory('CennikDrzewkaProdukt')->find_one($id);
+    $grupy=Model::factory('CennikDrzewkaGrupa')->find_many();
+
+    $admin->render('/drzewka/cennik_rodzaj_edycja.php',array('grupy'=>$grupy, 'produkt'=>$produkt, 'form'=>'edit'));
+});
+
+$app->post('/admin/drzewka/rodzaj/edytuj/:id', function ($id) use ($admin) {
+
+    $produkt=Model::factory('CennikDrzewkaProdukt')->find_one($id);
+    $grupa=$produkt->grupa()->find_one();
+    
+    $grupy=Model::factory('CennikDrzewkaGrupa')->find_many();
+ 
+        
+    
+    if($produkt instanceof CennikDrzewkaProdukt) {
+        $produkt->id_cennik_drzewka_grupy =  $admin->app->request()->post('idGr');
+        $produkt->nazwa =  $admin->app->request()->post('nazwa');
+        $produkt->pozycja =  $admin->app->request()->post('pozycja');
+        
+        if($grupa instanceof CennikDrzewkaGrupa) {
+            
+                $produkt->save();
+
+                $error['status']='0';
+                $error['msg']='Rodzaj został wyedytowany poprawie';
+            
+        } else {
+            $error['status']='1';
+            $error['msg']='Coß poszło nie tak. Spróbuj ponownie.';
+        }
+        
+    } else {
+        $error['status']='1';
+        $error['msg']='Coś poszło nie tak. Spróbuj ponownie.';
+    }
+    
+    $admin->render('/drzewka/cennik_rodzaj_edycja.php', array('grupy'=>$grupy, 'produkt'=>$produkt, 'form'=>'edit', 'error'=>$error));
+
+});
 
 /*
  * Drzewka - edytuj produkt
@@ -135,7 +271,7 @@ $app->get('/admin/drzewka/produkt/edytuj/:id', function ($id) use ($admin) {
     
     $produkty=Model::factory('CennikDrzewkaProdukt')->find_many();
 
-    $admin->render('/drzewka/cennik_edycja.php',array('produkty'=>$produkty, 'cena'=>$cena, 'idGrupy'=>$produkt->id_drzewka_cennik_grupy, 'form'=>'edit'));
+    $admin->render('/drzewka/cennik_edycja.php',array('produkty'=>$produkty, 'cena'=>$cena, 'form'=>'edit'));
 });
 
 
