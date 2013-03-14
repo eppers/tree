@@ -12,7 +12,7 @@ require_once './lib/Twig/Autoloader.php';
 require './lib/Paris/idiorm.php';
 require './lib/Paris/paris.php';
 
-//require 'conf.php';
+require 'conf.php';
 
 // Models
 

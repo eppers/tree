@@ -12,7 +12,7 @@
 		<h1>Cennik drzewka</h1>
 	</div>
 	<!-- end page-heading -->
-        <a href="/admin/drzewka/dodaj" id="add-program" class="btn btn-large btn-primary">Dodaj produkt</a>
+        <a href="/admin/drzewka/produkt/dodaj" id="add-program" class="btn btn-large btn-primary">Dodaj produkt</a>
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
 		<th rowspan="3" class="sized"><img src="/public/admin/img/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
