@@ -1,8 +1,8 @@
 <?php
  
 /*
- * TODO: przy dodawaniu grup(kategorii) mozliwosc dodawania zdjecia z boku - zmienic domyslny rozmiar obrazka i wyskalowac
- * Usuwanie produktow, rodzajow, grup
+ * TODO: zarzadzanie galerią
+ * Usuwanie produktow, rodzajow, grup, uslug
  * 
  */
 
@@ -470,19 +470,17 @@ $app->post('/admin/drzewka/produkt/dodaj', function () use ($admin) {
  */
 
 /*
- * Usługi - lista grup
+ * Usługi - lista uslug
  */
 $app->get('/admin/uslugi/lista', function () use ($admin) {
-    $tabGrupy = array();
     
-    $grupy = Model::factory('CennikDrzewkaGrupa')->order_by_asc('pozycja')->find_many();
-    
+    $uslugi = Model::factory('UslugiRodzaj')->order_by_asc('pozycja')->find_many();
 
-    $admin->render('/drzewka/cennik_kategorie_lista.php',array('grupy'=>$grupy));
+    $admin->render('/uslugi/cennik_lista.php',array('uslugi'=>$uslugi));
 });
 
 /*
- * Usługi - dodaj grupę
+ * Usługi - dodaj usluge
  */
 $app->get('/admin/uslugi/dodaj', function () use ($admin) {
     
@@ -491,37 +489,37 @@ $app->get('/admin/uslugi/dodaj', function () use ($admin) {
 
 $app->post('/admin/uslugi/dodaj', function () use ($admin) {
    
-    $grupa = Model::factory('CennikDrzewkaGrupa')->create();
-    $grupa->pozycja   = $admin->app->request()->post('pozycja');
-    $grupa->nazwa   = $admin->app->request()->post('nazwa');
-    $grupa->alt  = $admin->app->request()->post('alt');
+    $usluga = Model::factory('UslugiRodzaj')->create();
+    $usluga->pozycja   = $admin->app->request()->post('pozycja');
+    $usluga->nazwa   = $admin->app->request()->post('nazwa');
+    $usluga->cena  = $admin->app->request()->post('cena');
     
-    $admin->render('/uslugi/cennik_edycja.php', array('grupa'=>$grupa, 'form'=>'add', 'error'=>$error));
+    $admin->render('/uslugi/cennik_edycja.php', array('usluga'=>$usluga, 'form'=>'add', 'error'=>$error));
 
 });
 
 /*
- * Usługi - edytuj grupę(kategorie)
+ * Usługi - edytuj usluge
  */
 $app->get('/admin/uslugi/edytuj/:id', function ($id) use ($admin) {
-    $grupa=Model::factory('CennikDrzewkaGrupa')->find_one($id);
+    $usluga=Model::factory('UslugiRodzaj')->find_one($id);
     //edycja obrazkow
-    $admin->render('/uslugi/cennik_edycja.php',array('grupa'=>$grupa, 'form'=>'edit'));
+    $admin->render('/uslugi/cennik_edycja.php',array('usluga'=>$usluga, 'form'=>'edit'));
 });
 
 $app->post('/admin/uslugi/edytuj/:id', function ($id) use ($admin) {
 
-    $grupa=Model::factory('CennikDrzewkaGrupa')->find_one($id);
+    $usluga=Model::factory('UslugiRodzaj')->find_one($id);
     
-    if($grupa instanceof CennikDrzewkaGrupa) {
-        $grupa->nazwa =  $admin->app->request()->post('nazwa');
-        $grupa->pozycja =  $admin->app->request()->post('pozycja');
-        $grupa->alt  = $admin->app->request()->post('alt');
+    if($usluga instanceof UslugiRodzaj) {
+    $usluga->pozycja   = $admin->app->request()->post('pozycja');
+    $usluga->nazwa   = $admin->app->request()->post('nazwa');
+    $usluga->cena  = $admin->app->request()->post('cena');
            
-        $grupa->save();
+        $usluga->save();
 
         $error['status']='0';
-        $error['msg']='Rodzaj został wyedytowany poprawnie';
+        $error['msg']='Usługa została wyedytowana poprawnie';
             
         
     } else {
@@ -529,7 +527,7 @@ $app->post('/admin/uslugi/edytuj/:id', function ($id) use ($admin) {
         $error['msg']='Coś poszło nie tak. Spróbuj ponownie.';
     }
     
-    $admin->render('/drzewka/cennik_kategorie_edycja.php', array('grupa'=>$grupa, 'form'=>'edit', 'error'=>$error));
+    $admin->render('/uslugi/cennik_edycja.php', array('usluga'=>$usluga, 'form'=>'edit', 'error'=>$error));
 
 });
 

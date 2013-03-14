@@ -38,6 +38,7 @@
 					<th class="table-header-check"><a id="toggle-all" ></a> </th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Nazwa usługi</a></th>
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Cena</a></th>
+                                        <th class="table-header-repeat line-left minwidth-1"><a href="">Pozycja</a></th>
                                         <th class="table-header-options line-left"><a href="">Options</a></th>
 				</tr>
                            {% for usluga in uslugi %}
@@ -45,6 +46,7 @@
                                     <td><input  type="checkbox"/></td>
                                     <td>{{ usluga.nazwa }}</td>
                                     <td>{{ usluga.cena }}</td>
+                                    <td>{{ usluga.pozycja }}</td>
                                     <td class="options-width">
                                     <a href="/admin/uslugi/edytuj/{{ usluga.id_cennik_uslugi }}" title="Edit" class="icon-1 info-tooltip"></a>
                                     </td>
