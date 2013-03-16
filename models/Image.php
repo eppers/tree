@@ -1,25 +1,15 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-
-class CennikDrzewkaGrupa extends Model{
-        
-    public static $_table = 'cennik_drzewka_grupy';
-    public static $_id_column = 'id_cennik_drzewka_grupy';
+class Image {
     
-    public function produkt() {
-        return $this->has_many('CennikDrzewkaProdukt', 'id_cennik_drzewka_grupy'); // Note we use the model name literally - not a pluralised version
-    }
-   
-    public function setImage($_FILES) {
+    /*
+     * Creats images
+     */
+     static public function setImage($_FILES, $WORKSPACE, $thumb=false) {
         
         $typeAllowed = array('jpg', 'png', 'gif', 'jpeg');  
-        $WORKSPACE = './public/images/';
+       
+       $thumbsWORKSPACE =  $WORKSPACE.'/thumbs/';
     // $unique_id = md5(uniqid(rand(), true));
         $media = $_FILES['file']['name'];
         $filetype = substr(strrchr($media,'.'),1);
@@ -40,6 +30,11 @@ class CennikDrzewkaGrupa extends Model{
             if (!file_exists($WORKSPACE)) {
                 @mkdir($WORKSPACE, 0777);
             };
+            
+            if($thumb && !file_exists($thumbsWORKSPACE)) {
+                @mkdir($thumbsWORKSPACE, 0777);
+            }
+            
             if (!isset($_FILES['file']))
                     throw new Exception('Nie ma pliku do przesłania');
             else if (isset($_FILES['file']['error']) && $_FILES['file']['error'] != 0)
@@ -76,7 +71,7 @@ class CennikDrzewkaGrupa extends Model{
                     throw new Exception('Niewłaściwe rozszerzenie pliku'.$filetype);
 
 
-            $new_upload = $WORKSPACE.$file_name;
+            $new_upload = $WORKSPACE . $file_name;
             
             switch(strtolower($imageinfo['mime']))
                 {
@@ -94,6 +89,28 @@ class CennikDrzewkaGrupa extends Model{
                 }
                 
                 self::resizer($image,$new_upload);
+                
+                
+                if($thumb) {
+                    $new_thumb = $thumbsWORKSPACE.$file_name;
+                    switch(strtolower($imageinfo['mime']))
+                        {
+                            case 'image/jpeg':
+                                $image = imagecreatefromjpeg($_FILES['file']['tmp_name']);
+                                break;
+                            case 'image/png':
+                                $image = imagecreatefrompng($_FILES['file']['tmp_name']);
+                                break;
+                            case 'image/gif':
+                                $image = imagecreatefromgif($_FILES['file']['tmp_name']);
+                                break;
+                            default:
+                                exit('Zły typ pliku: '.$imageinfo['mime']);
+                        }
+                        
+                    self::resizer($image,$new_thumb,true);
+                }
+                
             
          }
         catch (Exception $e) {
@@ -109,14 +126,22 @@ class CennikDrzewkaGrupa extends Model{
         $error['uploaded_file']=$file_name;
         
         return $error;
-        
     }
     
-    static public function resizer($image,$file_name) {
+    /*
+     * Resizes images
+     */
+    static public function resizer($image,$file_name, $thumb=false) {
+        
+        if($thumb) {
+            $max_width = 300;
+            $max_height = 150;
+        } else {
         // Target dimensions
-        $max_width = 92;
-        $max_height = 91;
-
+            $max_width = 800;
+            $max_height = 800;
+        }
+        
         // Get current dimensions
         $old_width  = imagesx($image);
         $old_height = imagesy($image);
@@ -145,7 +170,33 @@ class CennikDrzewkaGrupa extends Model{
         imagedestroy($image);
         imagedestroy($new);
      }
-    
-
+     
+     /*
+      * Deletes images
+      */
+     static public function remove($image, $path=NULL, $thumb=false) {
+         if(isset($path)) 
+             $image=$path.$image;
+             
+         try {
+            if(!unlink($image)) throw new Exception('Plik nie został usunięty');
+            if($thumb) {
+                if(isset($path)) {
+                    $thumbImg = $path.'/thumbs/'.$image;
+                } else {
+                $imagePathArray = explode("/",$image);
+                $imageName = array_pop($imagePathArray);
+                $thumbImg = $imagePathArray.'/thumbs/'.$imageName;
+                }
+                if(!unlink($thumbImg)) throw new Exception('Miniatura nie został usunięty');
+            }
+         }
+     catch (Exception $e) {
+         return false;
+     }
+         
+         return true;
+     }
 }
+
 ?>

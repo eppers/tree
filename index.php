@@ -21,7 +21,8 @@ require './models/CennikDrzewkaGrupa.php';
 require './models/CennikDrzewkaProdukt.php';
 require './models/CennikUslugiRodzaj.php';
 require './models/Strona.php';
-
+require './models/Foto.php';
+require './models/Image.php';
 
 
 Twig_Autoloader::register();

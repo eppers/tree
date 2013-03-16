@@ -9,6 +9,23 @@ $(document).ready(function(){
         else {
             $('.file_1').attr('disabled',true);
         }
-    })
+    });
+    
+    $('.icon-2').click(function(){
+        var bool = deleteItem();
+        
+        return bool;
+    });
+
+    
+    
     
 });  
+
+function deleteItem() {
+   if (confirm("Czy napewno chcesz usunąć ten obiekt?")) {
+       return true;
+   }
+    return false;
+   
+}

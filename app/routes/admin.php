@@ -78,6 +78,7 @@ $app->post('/admin/sites/delete/:id', function ($id) use ($admin) {
 
 
 /*
+ * ----------------------------------- GRUPY (KATEGORIE) ----------------------------------
  * Drzewka - lista grup
  */
 $app->get('/admin/drzewka/grupa/lista', function () use ($admin) {
@@ -314,6 +315,7 @@ $app->post('/admin/drzewka/rodzaj/edytuj/:id', function ($id) use ($admin) {
 
 
 /*
+ * ----------------------------------- CENY (PRODUKTY) ----------------------------------
  * Drzewka - lista produktów
  */
 $app->get('/admin/drzewka/lista', function () use ($admin) {
@@ -533,7 +535,115 @@ $app->post('/admin/uslugi/edytuj/:id', function ($id) use ($admin) {
 
 
 
+/*
+ * Galeria ......................................................................
+ */
 
+/*
+ * Galeria - lista zdjęć
+ */
+$app->get('/admin/galeria/lista', function () use ($admin) {
+    
+    $fotos = Model::factory('Foto')->order_by_asc('pozycja')->find_many();
+
+    $admin->render('/foto/lista.php',array('fotos'=>$fotos));
+});
+
+/*
+ * Galeria - dodaj foto
+ */
+$app->get('/admin/galeria/dodaj', function () use ($admin) {
+    
+    $admin->render('/foto/edycja.php',array('form'=>'add'));
+});
+
+$app->post('/admin/galeria/dodaj', function () use ($admin) {
+   
+    $foto = Model::factory('Foto')->create();
+    $foto->pozycja   = $admin->app->request()->post('pozycja');
+    $foto->alt  = $admin->app->request()->post('alt');
+    
+    if (isset($_FILES['file'])) {
+
+        $error = $foto->setImage($_FILES,true);
+
+        if($error['status']==1) {
+                $admin->render('/foto/edycja.php', array('foto'=>$foto, 'form'=>'add', 'error'=>$error));
+            exit();
+        } else {
+
+
+        $foto->url  = $error['uploaded_file'];
+        $foto->save();
+        $error['status']='0';
+        $error['msg']='Zdjęcie została dodana pomyślnie';
+        
+        }
+
+    } else {
+
+    $error['status']='1';
+    $error['msg']='Zdjęcie nie została dodane';
+
+    }
+    
+
+    $admin->render('/foto/edycja.php', array('foto'=>$foto, 'form'=>'add', 'error'=>$error));
+
+});
+
+/*
+ * Galeria - edytuj zdjęcie
+ */
+$app->get('/admin/galeria/edytuj/:id', function ($id) use ($admin) {
+    $foto=Model::factory('Foto')->find_one($id);
+    
+    $admin->render('/galeria/edycja.php',array('foto'=>$foto, 'form'=>'edit'));
+});
+
+$app->post('/admin/galeria/edytuj/:id', function ($id) use ($admin) {
+
+    $foto=Model::factory('Foto')->find_one($id);
+    
+    if($foto instanceof Foto) {
+    $foto->pozycja   = $admin->app->request()->post('pozycja');
+    $foto->alt   = $admin->app->request()->post('alt');
+   
+    $foto->save();
+
+        $error['status']='0';
+        $error['msg']='Zdjęcie zostało wyedytowane poprawnie';
+            
+        
+    } else {
+        $error['status']='1';
+        $error['msg']='Coś poszło nie tak. Spróbuj ponownie.';
+    }
+    
+    $admin->render('/foto/edycja.php', array('foto'=>$foto, 'form'=>'edit', 'error'=>$error));
+
+});
+/*
+ * Galeria - usuń zdjęcie
+ */
+$app->get('/admin/galeria/usun/:id', function ($id) use ($admin) {
+    $foto=Model::factory('Foto')->find_one($id);
+    
+    if($foto instanceof Foto) {
+        Image::remove($foto->url, $foto::$_workspace, true);
+        $foto->delete();
+        
+        $error['status']='0';
+        $error['msg']='Zdjęcie zostało wyedytowane poprawnie';
+        
+        $admin->render('/foto/edycja.php',array('form'=>'add'));
+        exit();
+    } else {
+        $error['status']='1';
+        $error['msg']='Coś poszło nie tak';
+    }
+    $admin->render('/foto/edycja.php',array('foto'=>$foto, 'form'=>'edit'));
+});
 
 
 
