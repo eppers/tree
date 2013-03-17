@@ -26,26 +26,27 @@ $app->post('/admin/strony/view', function () use ($admin) {
 });
 
 /*
- * Edycja strony
+ * Edycja stronę
  */
-$app->get('/admin/sites/edit/:id', function ($id) use ($admin) {
-    $sites=Model::factory('Site')->find_many();
-    $site=Model::factory('Site')->find_one($id);
-    if($site instanceof Site) {
-        $title=$site->title;
-        $content=$site->content;
+$app->get('/admin/strony/edytuj/:id', function ($id) use ($admin) {
+ 
+    $site=Model::factory('Strona')->find_one($id);
+    
+    if($site instanceof Strona) {
+        $title=$site->tytul;
+        $content=$site->zawartosc;
 
-        $admin->render('/sites/view.php',array('title'=>$title,'content'=>$content, 'sites'=>$sites, 'id'=>$id));
+        $admin->render('/sites/view.php',array('title'=>$title,'content'=>$content, 'id'=>$id));
     }
-    else $app->redirect('/admin/sites/view');
+    //else $admin->redirect('/admin/sites/view');
 });
 
-$app->post('/admin/sites/edit/:id', function ($id) use ($admin) {
+$app->post('/admin/strony/edytuj/:id', function ($id) use ($admin) {
 
-    $site=Model::factory('Site')->find_one($id);
-    if($site instanceof Site) {
-        $site->title   = $admin->app->request()->post('title');
-        $site->content  = $admin->app->request()->post('content');
+    $site=Model::factory('Strona')->find_one($id);
+    if($site instanceof Strona) {
+        $site->tytul   = $admin->app->request()->post('title');
+        $site->zawartosc  = $admin->app->request()->post('content');
         $site->save();
 
         $error['status']='0';
@@ -56,9 +57,8 @@ $app->post('/admin/sites/edit/:id', function ($id) use ($admin) {
         $error['status']='1';
         $error['msg']='Strona nie została wyedytowana. Spróbuj ponownie';
     }
-    $sites=Model::factory('Site')->find_many();
-    
-    $admin->render('/sites/view.php', array('title'=>$site->title,'content'=>$site->content, 'sites'=>$sites, 'id'=>$id, 'error'=>$error));
+  
+    $admin->render('/sites/view.php', array('title'=>$site->tytul,'content'=>$site->zawartosc, 'id'=>$id, 'error'=>$error));
 });
 
 /*

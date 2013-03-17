@@ -79,8 +79,7 @@ img {
 
 button,
 input,
-select,
-textarea {
+select{
   margin: 0;
   font-size: 100%;
   vertical-align: middle;
@@ -116,11 +115,6 @@ input[type="search"] {
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
-}
-
-textarea {
-  overflow: auto;
-  vertical-align: top;
 }
 
 .clearfix {
@@ -752,8 +746,7 @@ legend small {
 label,
 input,
 button,
-select,
-textarea {
+select {
   font-size: 13px;
   font-weight: normal;
   line-height: 18px;
@@ -761,8 +754,7 @@ textarea {
 
 input,
 button,
-select,
-textarea {
+select{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -772,7 +764,6 @@ label {
 }
 
 select,
-textarea,
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
@@ -798,16 +789,14 @@ input[type="file"],
   color: #555555;
 }
 
-input,
-textarea {
+input
+ {
   width: 210px;
 }
 
-textarea {
-  height: auto;
-}
 
-textarea,
+
+
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
@@ -839,7 +828,6 @@ input[type="file"],
           transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
-textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="datetime"]:focus,
@@ -974,7 +962,6 @@ input[type="checkbox"]:focus {
 
 input[class*="span"],
 select[class*="span"],
-textarea[class*="span"],
 .uneditable-input[class*="span"],
 .row-fluid input[class*="span"],
 .row-fluid select[class*="span"],
@@ -994,7 +981,6 @@ textarea[class*="span"],
 }
 
 input,
-textarea,
 .uneditable-input {
   margin-left: 0;
 }
@@ -1073,10 +1059,8 @@ textarea.span1,
 
 input[disabled],
 select[disabled],
-textarea[disabled],
 input[readonly],
-select[readonly],
-textarea[readonly] {
+select[readonly]{
   cursor: not-allowed;
   background-color: #eeeeee;
   border-color: #ddd;
@@ -1194,14 +1178,12 @@ input[type="checkbox"][readonly] {
 }
 
 input:focus:required:invalid,
-textarea:focus:required:invalid,
 select:focus:required:invalid {
   color: #b94a48;
   border-color: #ee5f5b;
 }
 
 input:focus:required:invalid:focus,
-textarea:focus:required:invalid:focus,
 select:focus:required:invalid:focus {
   border-color: #e9322d;
   -webkit-box-shadow: 0 0 6px #f8b9b7;

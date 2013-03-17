@@ -17,8 +17,11 @@ $app->get('/home', function () use ($app) {
 });
 
 $app->get('/o-szkolce', function () use ($app) {
-
-    $app->render('o-szkolce.php');
+    
+    $strona = Model::factory('Strona')->where('id_strony',1)->find_one();
+    
+    $app->render('page.php',array('content'=>$strona->zawartosc, 'title'=>$strona->tytul));
+    //$app->render('o-szkolce.php');
 });
 
 $app->get('/kontakt', function () use ($app) {

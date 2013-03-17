@@ -32,7 +32,7 @@
             {% include 'error.php' %}
         {% endif %}
 		<!-- start id-form -->
-   <form name="site-form" action="/admin/sites/edit/{{id}}" method="post">        
+   <form name="site-form" action="/admin/strony/edytuj/{{id}}" method="post">        
         <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
 		<tr>
                     <th valign="top">Nazwa strony:</th>

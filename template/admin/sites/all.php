@@ -46,7 +46,7 @@
 					<td>{{ site.id_strony }}</td>
 					<td>{{ site.tytul }}</td>
 					<td class="options-width">
-					<a href="/admin/sites/edit/{{ site.id_strony }}" title="Edit" class="icon-1 info-tooltip"></a>
+					<a href="/admin/strony/edytuj/{{ site.id_strony }}" title="Edit" class="icon-1 info-tooltip"></a>
 					</td>
 				</tr>
                         {% else %}  

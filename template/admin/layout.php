@@ -118,8 +118,7 @@ $(function() {
 
 
 
-<!-- EDITOR -->
-<script src="/public/admin/js/jquery.cleditor.min.js"></script>
+
 <!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
 <script src="/public/admin/js/jquery.pngFix.pack.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -245,6 +244,12 @@ $(document).pngFix( );
 	<div class="clear">&nbsp;</div>
 </div>
 <!-- end footer -->
+	<!-- external javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!-- jQuery -->
+	<script src="/public/admin/js/jquery-1.7.2.min.js"></script>
 	<!-- jQuery UI -->
 	<script src="/public/admin/js/jquery-ui-1.8.21.custom.min.js"></script>
 	<!-- transition / effect library -->
@@ -290,10 +295,12 @@ $(document).pngFix( );
 
 	<!-- select or dropdown enhancer -->
 	<script src="/public/admin/js/jquery.chosen.min.js"></script>
+	<!-- checkbox, radio, and file input styler -->
+	<script src="/public/admin/js/jquery.uniform.min.js"></script>
 	<!-- plugin for gallery image view -->
 	<script src="/public/admin/js/jquery.colorbox.min.js"></script>
 	<!-- rich text editor library -->
-	
+	<script src="/public/admin/js/jquery.cleditor.min.js"></script>
 	<!-- notification plugin -->
 	<script src="/public/admin/js/jquery.noty.js"></script>
 	<!-- file manager library -->
