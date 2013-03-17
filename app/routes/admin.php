@@ -110,7 +110,7 @@ $app->post('/admin/drzewka/grupa/dodaj', function () use ($admin) {
         $error = $grupa->setImage($_FILES);
 
         if($error['status']==1) {
-                $admin->render('/drzewka/cennik_grupa_edycja.php', array('grupa'=>$grupa, 'form'=>'add', 'error'=>$error));
+                $admin->render('/drzewka/cennik_kategorie_edycja.php', array('grupa'=>$grupa, 'form'=>'add', 'error'=>$error));
             exit();
         } else {
 
@@ -130,7 +130,7 @@ $app->post('/admin/drzewka/grupa/dodaj', function () use ($admin) {
     }
     
 
-    $admin->render('/drzewka/cennik_grupa_edycja.php', array('grupa'=>$grupa, 'form'=>'add', 'error'=>$error));
+    $admin->render('/drzewka/cennik_kategorie_edycja.php', array('grupa'=>$grupa, 'form'=>'add', 'error'=>$error));
 
 });
 
@@ -183,6 +183,32 @@ $app->post('/admin/drzewka/grupa/edytuj/:id', function ($id) use ($admin) {
     
     $admin->render('/drzewka/cennik_kategorie_edycja.php', array('grupa'=>$grupa, 'form'=>'edit', 'error'=>$error));
 
+});
+
+/*
+ * Drzewka usuwanie kategorii (grupy)
+ */
+
+$app->get('/admin/drzewka/grupa/usun/:id', function ($id) use ($admin) {
+    
+    $grupa=Model::factory('CennikDrzewkaGrupa')->find_one($id);
+    
+    if($grupa instanceof CennikDrzewkaGrupa) {
+        if(Image::remove($grupa->img, $grupa::$_workspace)) {
+            $grupa->delete();
+
+            $error['status']='0';
+            $error['msg']='Grupa została skasowana poprawnie';
+
+            $admin->render('/drzewka/cennik_kategorie_edycja.php',array('form'=>'add', 'error'=>$error));
+            exit();
+        }
+    } else {
+        $error['status']='1';
+        $error['msg']='Coś poszło nie tak';
+    }
+    
+    $admin->render('/drzewka/cennik_kategorie_edycja.php',array('form'=>'add', 'error'=>$error));
 });
 
 
@@ -310,6 +336,30 @@ $app->post('/admin/drzewka/rodzaj/edytuj/:id', function ($id) use ($admin) {
     
     $admin->render('/drzewka/cennik_rodzaj_edycja.php', array('grupy'=>$grupy, 'produkt'=>$produkt, 'form'=>'edit', 'error'=>$error));
 
+});
+
+/*
+ * Drzewka usuwanie rodzaju
+ */
+$app->get('/admin/drzewka/rodzaj/usun/:id', function ($id) use ($admin) {
+    
+    $grupy=Model::factory('CennikDrzewkaGrupa')->find_many();
+    $produkt=Model::factory('CennikDrzewkaProdukt')->find_one($id);
+    
+    if($produkt instanceof CennikDrzewkaProdukt) {
+        $produkt->delete();
+        
+        $error['status']='0';
+        $error['msg']='Rodzaj zostało skasowany poprawnie';
+        
+        $admin->render('/drzewka/cennik_rodzaj_edycja.php',array('grupy'=>$grupy, 'form'=>'add', 'error'=>$error));
+        exit();
+    } else {
+        $error['status']='1';
+        $error['msg']='Coś poszło nie tak';
+    }
+    
+    $admin->render('/drzewka/cennik_rodzaj_edycja.php',array('grupy'=>$grupy, 'form'=>'add', 'error'=>$error));
 });
 
 
@@ -465,7 +515,30 @@ $app->post('/admin/drzewka/produkt/dodaj', function () use ($admin) {
     $admin->render('/drzewka/cennik_edycja.php', array('produkty'=>$produkty, 'cena'=>$cena, 'form'=>'edit', 'error'=>$error));
 
 });
+/*
+ * Drzewka usuwanie ceny produktu (rodzaju)
+ */
+$app->get('/admin/drzewka/produkt/usun/:id', function ($id) use ($admin) {
+    
+    $produkty=Model::factory('CennikDrzewkaProdukt')->find_many();
 
+    $cena=Model::factory('CennikDrzewkaCena')->find_one($id);
+    
+    if($cena instanceof CennikDrzewkaCena) {
+        $cena->delete();
+        
+        $error['status']='0';
+        $error['msg']='Cena zostało skasowana poprawnie';
+        
+        $admin->render('/drzewka/cennik_edycja.php',array('produkty'=>$produkty, 'form'=>'add', 'error'=>$error));
+        exit();
+    } else {
+        $error['status']='1';
+        $error['msg']='Coś poszło nie tak';
+    }
+    
+    $admin->render('/drzewka/cennik_edycja.php',array('produkty'=>$produkty, 'form'=>'add', 'error'=>$error));
+});
 
 /*
  * Cennik uslugi ......................................................................
@@ -532,8 +605,26 @@ $app->post('/admin/uslugi/edytuj/:id', function ($id) use ($admin) {
     $admin->render('/uslugi/cennik_edycja.php', array('usluga'=>$usluga, 'form'=>'edit', 'error'=>$error));
 
 });
-
-
+/*
+ * Usługi - usun usluge
+ */
+$app->get('/admin/uslugi/usun/:id', function ($id) use ($admin) {
+    $usluga=Model::factory('UslugiRodzaj')->find_one($id);
+    
+    if($usluga instanceof UslugiRodzaj) {
+        $usluga->delete();
+        
+        $error['status']='0';
+        $error['msg']='Zdjęcie zostało wyedytowane poprawnie';
+        
+        $admin->render('/uslugi/cennik_edycja.php',array('form'=>'add'));
+        exit();
+    } else {
+        $error['status']='1';
+        $error['msg']='Coś poszło nie tak';
+    }
+    $admin->render('/uslugi/cennik_edycja.php',array('form'=>'add', 'error'=>$error));
+});
 
 /*
  * Galeria ......................................................................
@@ -630,14 +721,15 @@ $app->get('/admin/galeria/usun/:id', function ($id) use ($admin) {
     $foto=Model::factory('Foto')->find_one($id);
     
     if($foto instanceof Foto) {
-        Image::remove($foto->url, $foto::$_workspace, true);
-        $foto->delete();
-        
-        $error['status']='0';
-        $error['msg']='Zdjęcie zostało wyedytowane poprawnie';
-        
-        $admin->render('/foto/edycja.php',array('form'=>'add'));
-        exit();
+        if(Image::remove($foto->url, $foto::$_workspace, true)) {
+            $foto->delete();
+
+            $error['status']='0';
+            $error['msg']='Zdjęcie zostało usunięte';
+
+            $admin->render('/foto/edycja.php',array('form'=>'add'));
+            exit();
+        }
     } else {
         $error['status']='1';
         $error['msg']='Coś poszło nie tak';

@@ -51,6 +51,7 @@
                                     <td>{{ grupa.alt }}</td>
                                     <td class="options-width">
                                     <a href="/admin/drzewka/grupa/edytuj/{{ grupa.id_cennik_drzewka_grupy }}" title="Edit" class="icon-1 info-tooltip"></a>
+                                    <a href="/admin/drzewka/grupa/usun/{{ grupa.id_cennik_drzewka_grupy }}" title="Delete" class="icon-2 info-tooltip"></a>
                                     </td>
                             </tr>
                             {% else %}  

@@ -28,7 +28,51 @@ $app->get('/kontakt', function () use ($app) {
 
 $app->get('/cennik', function () use ($app) {
 
-    $app->render('cennik.php');
+    $tabCennik = array();
+   
+    $grupy = Model::factory('CennikDrzewkaGrupa')->order_by_asc('pozycja')->find_many();
+    
+    foreach($grupy as $grupa) {
+        
+        if($grupa instanceof CennikDrzewkaGrupa) {
+
+            $produkty = $grupa->produkt()->order_by_asc('pozycja')->find_many();
+            
+            foreach( $produkty as $produkt ) {
+                if($produkt instanceof CennikDrzewkaProdukt) {
+                            
+                    $ceny = $produkt->cena()->order_by_asc('pozycja')->find_many();
+                  //   print_r($tabProdukty['nazwa']);
+                    foreach($ceny as $cena){
+                        if($cena instanceof CennikDrzewkaCena) {
+                          
+                              $tabTemp['id_cena']=$cena->id_cennik_drzewka_ceny;
+                              $tabTemp['wysokosc'] = $cena->wysokosc;
+                              $tabTemp['rozmiar'] = $cena->rozmiar;
+                              $tabTemp['cena'] = $cena->cena;
+                              $tabTemp['nazwa_produktu']=$produkt->nazwa;
+                              $tabTemp['pozycja_produktu']=$produkt->pozycja;
+                              $tabTemp['pozycja_cena']=$cena->pozycja;
+                              $tabTemp['id_prod']=$produkt->id_cennik_drzewka_produkty;
+                              $tabTemp['nazwa_grupy'] = $grupa->nazwa;
+                              $tabTemp['id_gr'] = $grupa->id_cennik_drzewka_grupy;
+                              
+                              $tabCennik[]=$tabTemp;
+                              
+                        }
+                        
+                    }
+                   
+                  
+                }
+                
+            }
+            
+        }
+    }
+
+    
+    $app->render('cennik.php',array('cennik'=>$tabCennik));
 });
 
 $app->get('/cennik-uslugi', function () use ($app) {

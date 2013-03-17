@@ -55,6 +55,7 @@
                                     <td>{{ produkt.pozycja_cena }}</td>
                                     <td class="options-width">
                                     <a href="/admin/drzewka/produkt/edytuj/{{ produkt.id_cena }}" title="Edit" class="icon-1 info-tooltip"></a>
+                                    <a href="/admin/drzewka/produkt/usun/{{ produkt.id_cena }}" title="Delete" class="icon-2 info-tooltip"></a>
                                     </td>
                             </tr>
                             {% else %}  

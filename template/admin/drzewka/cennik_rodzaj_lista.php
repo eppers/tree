@@ -49,6 +49,7 @@
                                     <td>{{ produkt.pozycja_produktu }}</td>
                                     <td class="options-width">
                                     <a href="/admin/drzewka/rodzaj/edytuj/{{ produkt.id_prod }}" title="Edit" class="icon-1 info-tooltip"></a>
+                                    <a href="/admin/drzewka/rodzaj/usun/{{ produkt.id_prod }}" title="Delete" class="icon-2 info-tooltip"></a>
                                     </td>
                             </tr>
                             {% else %}  
