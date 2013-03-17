@@ -176,14 +176,11 @@ $(document).pngFix( );
 		<div class="nav">
 		<div class="table">
 		
-		<ul class="select"><li><a href="/admin/sites/view"><b>Strony</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<ul class="select"><li><a href="/admin/strony/view"><b>Strony</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub">
 			<ul class="sub">
-                                <li><a href="/admin/sites/view">Wszystkie</a></li>	
-                                {% for site in sites %}
-                                <li><a href="/admin/sites/edit/{{ site.id_strony }}">{{ site.tytul }}</a></li>
-                                {% endfor %}
+                                <li><a href="/admin/strony/view">Wszystkie</a></li>	
 			</ul>
 		</div>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->

@@ -36,43 +36,47 @@ $app->get('/cennik', function () use ($app) {
         
         if($grupa instanceof CennikDrzewkaGrupa) {
 
+            $tabGrupa= array();
+            
             $produkty = $grupa->produkt()->order_by_asc('pozycja')->find_many();
             
             foreach( $produkty as $produkt ) {
                 if($produkt instanceof CennikDrzewkaProdukt) {
-                            
+                    
+                   
                     $ceny = $produkt->cena()->order_by_asc('pozycja')->find_many();
                   //   print_r($tabProdukty['nazwa']);
                     foreach($ceny as $cena){
                         if($cena instanceof CennikDrzewkaCena) {
                           
-                              $tabTemp['id_cena']=$cena->id_cennik_drzewka_ceny;
-                              $tabTemp['wysokosc'] = $cena->wysokosc;
-                              $tabTemp['rozmiar'] = $cena->rozmiar;
-                              $tabTemp['cena'] = $cena->cena;
-                              $tabTemp['nazwa_produktu']=$produkt->nazwa;
-                              $tabTemp['pozycja_produktu']=$produkt->pozycja;
-                              $tabTemp['pozycja_cena']=$cena->pozycja;
-                              $tabTemp['id_prod']=$produkt->id_cennik_drzewka_produkty;
-                              $tabTemp['nazwa_grupy'] = $grupa->nazwa;
-                              $tabTemp['id_gr'] = $grupa->id_cennik_drzewka_grupy;
+                              $tabCena['id_cena']=$cena->id_cennik_drzewka_ceny;
+                              $tabCena['wysokosc'] = $cena->wysokosc;
+                              $tabCena['rozmiar'] = $cena->rozmiar;
+                              $tabCena['cena'] = $cena->cena;
+                              $tabCena['nazwa_produktu'] = $produkt->nazwa;
+                              $tabCena['id_prod']=$produkt->id_cennik_drzewka_produkty;
                               
-                              $tabCennik[]=$tabTemp;
-                              
+                              $tabGrupa['produkty'][]=$tabCena;
                         }
                         
                     }
+                    
+
                    
-                  
                 }
                 
             }
             
+              $tabGrupa['nazwa']=$grupa->nazwa;
+              $tabGrupa['img']=$grupa->img;
+                    
+              $tabGrupy[]=$tabGrupa;
+              unset($tabGrupa);
         }
     }
-
-    
-    $app->render('cennik.php',array('cennik'=>$tabCennik));
+   
+ //   print_r($tabGrupy);
+    $app->render('cennik.php',array('grupy'=>$tabGrupy));
 });
 
 $app->get('/cennik-uslugi', function () use ($app) {
@@ -86,7 +90,7 @@ $app->get('/transport', function () use ($app) {
 });
 
 $app->get('/galeria', function () use ($app) {
-
+    
     $app->render('galeria.php');
 });
 
@@ -97,14 +101,16 @@ $app->get('/uslugi', function () use ($app) {
 
 $app->get('/szkolka-galeria', function () use ($app) {
     
-    $fileArray = array();
+    $fotos = Model::factory('Foto')->order_by_asc('pozycja')->find_many();
     
-    $dir = opendir('./public/images/gallery/thumbs/');
-    while(false !== ($file = readdir($dir)))
-    if($file != '.' && $file != '..') 
-    $fileArray[] = $file;
+//    $fileArray = array();
+//    
+//    $dir = opendir('./public/images/gallery/thumbs/');
+//    while(false !== ($file = readdir($dir)))
+//    if($file != '.' && $file != '..') 
+//    $fileArray[] = $file;
     
-    $app->render('gallery.php', array('files'=>$fileArray));
+    $app->render('gallery.php', array('files'=>$fotos));
 });
 
 $app->get('/thuja_occ_danica', function () use ($app) {

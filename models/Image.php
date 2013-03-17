@@ -5,7 +5,7 @@ class Image {
     /*
      * Creats images
      */
-     static public function setImage($_FILES, $WORKSPACE, $thumb=false) {
+     static public function setImage($_FILES, $WORKSPACE, $thumb=false, $category=false) {
         
         $typeAllowed = array('jpg', 'png', 'gif', 'jpeg');  
        
@@ -88,7 +88,7 @@ class Image {
                         exit('Zły typ pliku: '.$imageinfo['mime']);
                 }
                 
-                self::resizer($image,$new_upload);
+                self::resizer($image,$new_upload,false,$category);
                 
                 
                 if($thumb) {
@@ -131,7 +131,7 @@ class Image {
     /*
      * Resizes images
      */
-    static public function resizer($image,$file_name, $thumb=false) {
+    static public function resizer($image,$file_name, $thumb=false, $category=false) {
         
         if($thumb) {
             $max_width = 300;
@@ -140,6 +140,11 @@ class Image {
         // Target dimensions
             $max_width = 800;
             $max_height = 800;
+        }
+        
+        if($category) {
+            $max_width = 91;
+            $max_height = 92;
         }
         
         // Get current dimensions
@@ -176,23 +181,25 @@ class Image {
       */
      static public function remove($image, $path=NULL, $thumb=false) {
          if(isset($path)) 
-             $image=$path.$image;
+             $imagePath=$path.$image;
+         else
+             $imagePath=$image;
              
          try {
-            if(!unlink($image)) throw new Exception('Plik nie został usunięty');
+            if(!unlink($imagePath)) throw new Exception('Plik nie został usunięty');
             if($thumb) {
                 if(isset($path)) {
-                    $thumbImg = $path.'/thumbs/'.$image;
+                    $thumbImg = $path.'thumbs/'.$image;
                 } else {
                 $imagePathArray = explode("/",$image);
                 $imageName = array_pop($imagePathArray);
-                $thumbImg = $imagePathArray.'/thumbs/'.$imageName;
+                $thumbImg = $imagePathArray.'thumbs/'.$imageName;
                 }
-                if(!unlink($thumbImg)) throw new Exception('Miniatura nie został usunięty');
+                if(!unlink($thumbImg)) throw new Exception('Miniatura nie została usunięta');
             }
          }
      catch (Exception $e) {
-         return false;
+         return $e->getMessage();
      }
          
          return true;

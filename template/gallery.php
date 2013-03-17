@@ -10,7 +10,7 @@
                          <div>
                              <ul>
                                  {% for file in files %}
-                                 <li><a href="/public/images/gallery/{{file}}" rel="gallery"  class="pirobox_gall" title=""><img src="/public/images/gallery/thumbs/{{file}}"  /></a></li>
+                                 <li><a href="/public/images/gallery/{{file.url}}" rel="gallery"  class="pirobox_gall" title="{{file.alt}}"><img src="/public/images/gallery/thumbs/{{file.url}}" alt="{{file.alt}}" /></a></li>
                                  {% endfor %}
                              </ul>
                          </div>

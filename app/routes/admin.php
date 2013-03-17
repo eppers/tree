@@ -20,7 +20,7 @@ $app->get('/admin/strony/view', function () use ($admin) {
     $admin->render('/sites/all.php',array('sites'=>$sites));
 });
 
-$app->post('/admin/sites/view', function () use ($admin) {
+$app->post('/admin/strony/view', function () use ($admin) {
     $sites=Model::factory('Strona')->find_many();
     $admin->render('/sites/all.php',array('sites'=>$sites));    
 });
@@ -107,7 +107,7 @@ $app->post('/admin/drzewka/grupa/dodaj', function () use ($admin) {
     
     if (isset($_FILES['file'])) {
 
-        $error = $grupa->setImage($_FILES);
+        $error = Image::setImage($_FILES, $grupa::$_workspace, false, true);
 
         if($error['status']==1) {
                 $admin->render('/drzewka/cennik_kategorie_edycja.php', array('grupa'=>$grupa, 'form'=>'add', 'error'=>$error));
@@ -194,14 +194,17 @@ $app->get('/admin/drzewka/grupa/usun/:id', function ($id) use ($admin) {
     $grupa=Model::factory('CennikDrzewkaGrupa')->find_one($id);
     
     if($grupa instanceof CennikDrzewkaGrupa) {
-        if(Image::remove($grupa->img, $grupa::$_workspace)) {
+        
+        $remove = Image::remove($grupa->img, $grupa::$_workspace);
+        if($remove) {
             $grupa->delete();
 
             $error['status']='0';
             $error['msg']='Grupa została skasowana poprawnie';
 
-            $admin->render('/drzewka/cennik_kategorie_edycja.php',array('form'=>'add', 'error'=>$error));
-            exit();
+        } else {
+            $error['status']='1';
+            $error['msg']=$remove;            
         }
     } else {
         $error['status']='1';
@@ -445,7 +448,7 @@ $app->post('/admin/drzewka/produkt/edytuj/:id', function ($id) use ($admin) {
         
     
     if($cena instanceof CennikDrzewkaCena) {
-        $cena->id_drzewka_cennik_produkty =  $admin->app->request()->post('idProd');
+        $cena->id_cennik_drzewka_produkty =  $admin->app->request()->post('idProd');
         $cena->wysokosc =  $admin->app->request()->post('wysokosc');
         $cena->rozmiar =  $admin->app->request()->post('rozmiar');
         $cena->cena =  $admin->app->request()->post('cena');
@@ -656,7 +659,7 @@ $app->post('/admin/galeria/dodaj', function () use ($admin) {
     
     if (isset($_FILES['file'])) {
 
-        $error = $foto->setImage($_FILES,true);
+        $error = Image::setImage($_FILES,$foto::$_workspace,true);
 
         if($error['status']==1) {
                 $admin->render('/foto/edycja.php', array('foto'=>$foto, 'form'=>'add', 'error'=>$error));
@@ -721,297 +724,25 @@ $app->get('/admin/galeria/usun/:id', function ($id) use ($admin) {
     $foto=Model::factory('Foto')->find_one($id);
     
     if($foto instanceof Foto) {
-        if(Image::remove($foto->url, $foto::$_workspace, true)) {
+        $remove = Image::remove($foto->url, $foto::$_workspace);
+        if($remove) {
             $foto->delete();
 
             $error['status']='0';
             $error['msg']='Zdjęcie zostało usunięte';
 
-            $admin->render('/foto/edycja.php',array('form'=>'add'));
-            exit();
+        } else {
+            $error['status']='1';
+            $error['msg']=$remove;
         }
     } else {
         $error['status']='1';
         $error['msg']='Coś poszło nie tak';
     }
-    $admin->render('/foto/edycja.php',array('foto'=>$foto, 'form'=>'edit'));
+
+    $admin->render('/foto/edycja.php',array('foto'=>$foto, 'form'=>'edit', 'error'=>$error));
 });
 
 
 
 
-$app->get('/admin/tv/pakiet', function () use ($admin) {
-    
-    $pakiets = Model::factory('Pakiet')->find_many();
-    
-    $admin->render('/tv/pakiet/all.php',array('pakiety'=>$pakiets));
-});
-
-$app->get('/admin/tv/pakiet/:idPakiet/programy', function ($idPakiet) use ($admin) {
-    
-    $channels = Model::factory('Program')->filter('getPakietChannels',$idPakiet)->find_many();
-    
-    
-    $admin->render('/tv/program/all.php',array('channels'=>$channels, 'idPakiet'=>$idPakiet));
-});
-
-$app->get('/admin/tv/pakiet/:idPakiet/programy/edit/:id', function ($idPakiet, $id) use ($admin) {
-    
-    $tematyki = Model::factory('Tematyka')->find_many();
-    $program =  Model::factory('Program')->find_one($id);
-    $programTematyki = Model::factory('Program')->filter('getChannelTematyka',$idPakiet, $id)->find_many();
-    $pakiet = Model::factory('Pakiet')->find_one($idPakiet);
-    
-    $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'pakiet'=>$pakiet, 'programTematyki'=>$programTematyki, 'program'=>$program, 'form'=>'edit'));
-});
-
-$app->post('/admin/tv/pakiet/:idPakiet/programy/edit/:id', function ($idPakiet, $id) use ($admin) {
-  
-   $program=Model::factory('Program')->find_one($id); 
-    
-   if($program instanceof Program) {
-        $program->name   = $admin->app->request()->post('name');
-        
-        if (isset($_FILES['file'])) {
-
-            $error = $program->setImage($_FILES);
-
-            if($error['status']==1) {
-                    $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'pakiet'=>$pakiet, 'programTematyki'=>$programTematyki, 'program'=>$program, 'form'=>'edit', 'error'=>$error));
-                exit();
-            } else {
-
-            $program->img  = $error['uploaded_file'];
-
-            }
-
-        } else {
-
-            $program->img  = $admin->app->request()->post('obrazek');
-        }
-
-        
-
-        $program->save();
-
-        $programTematyki = Model::factory('Program')->filter('getChannelTematyka',$idPakiet, $id)->find_many();
-        $tematykaCheckboxArray = $admin->app->request()->post('tematykaCheckboxArray');
-
-         foreach ($programTematyki as $rowProgramTematyki) {
-
-                $key = array_search($rowProgramTematyki->tv_tematyka_id, $tematykaCheckboxArray);
-                if(empty($key)) {
-
-                    $pakietTematyka = Model::factory('PakietTematyka')->where('tv_tematyka_id',$rowProgramTematyki->tv_tematyka_id)->where('tv_kategorie_id',$idPakiet)->find_one();
-                    $tematykaProgram = Model::factory('TematykaProgram')->where('kategorie_tematyka_id',$pakietTematyka->id_kategorie_tematyka)->find_one();
-                    $tematykaProgram->delete();
-
-                }
-                unset($tematykaCheckboxArray[$key]);
-               
-        }
-   
-        if(count($tematykaCheckboxArray>0)) {
-            
-            $pakiet = Model::factory('Pakiet')->find_one($idPakiet);
-            $pakietTematyki = $pakiet->tematyka()->find_array('id_tv_tematyka');
-
-            //spłaszczenie tablicy z dwuwymiarowej do jednowymiarowej. Zamienienie obiektu recursive na tablice, gdzie false jako 2 argument 
-            //oznacza nie zachowanie indeksow jako indeksow w splaszczonej tabeli (indeksy sie powielaly w tym wypadku)
-            $pakietTematykiArray = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($pakietTematyki)),false);
-
-            foreach($tematykaCheckboxArray as $rowTematykaCheckboxArray) {
-            
-                if(!in_array($rowTematykaCheckboxArray, $pakietTematykiArray)) {
-                    
-                    try {
-                        $pakietTematyka = Model::factory('PakietTematyka')->create();
-                        $pakietTematyka->tv_kategorie_id = $idPakiet;
-                        $pakietTematyka->tv_tematyka_id = $rowTematykaCheckboxArray;
-                        if(!$pakietTematyka->save()) throw new Exception('Coś poszło nie tak. Tematyka nie została powiązana z pakietem') ;
-                    }
-                    catch (Exception $e) {
-                        $error['status'] = '1';
-                        $error['msg'] = $e->getMessage();
-                        $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'pakiet'=>$pakiet, 'programTematyki'=>$programTematyki, 'program'=>$program, 'form'=>'edit', 'error'=>$error));
-                        exit();
-                    }
-                }
-
-                try {
-                    $pakietTematyka = Model::factory('PakietTematyka')->where('tv_tematyka_id',$rowTematykaCheckboxArray)->where('tv_kategorie_id',$idPakiet)->find_one();
-                    $tematykaProgram = Model::factory('TematykaProgram')->create();
-                    $tematykaProgram->tv_programy_id = $id;
-                    $tematykaProgram->kategorie_tematyka_id = $pakietTematyka->id_kategorie_tematyka;
-                    if(!$tematykaProgram->save()) throw new Exception('Coś poszło nie tak. Program nie została powiązana z pakietem-tematyką') ;;
-                } 
-                catch (Exception $e) {
-                    $error['status'] = '1';
-                    $error['msg'] = $e->getMessage();
-                    $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'pakiet'=>$pakiet, 'programTematyki'=>$programTematyki, 'program'=>$program, 'form'=>'edit', 'error'=>$error));
-                    exit();
-                }
-            }
-
-        }
-        $error['status']='0';
-        $error['msg']='Program został wyedytowany poprawie';
-        
-        $tematyki = Model::factory('Tematyka')->find_many();
-        
-        
-        
-        
-    }
-    else {
-        $error['status']='1';
-        $error['msg']='Program NIE został wyedytowany poprawnie. Spróbuj ponownie.';
-    }
-    
-    //pobieram ponownie, aby zaktualizować listę dla programu
-    $programTematyki = Model::factory('Program')->filter('getChannelTematyka',$idPakiet, $id)->find_many();
-    
-    $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'pakiet'=>$pakiet, 'programTematyki'=>$programTematyki, 'program'=>$program, 'form'=>'edit', 'error'=>$error));
-});
-
-$app->get('/admin/tv/pakiet/:idPakiet/programy/add', function ($idPakiet) use ($admin) {
-  
-    $tematyki = Model::factory('Tematyka')->find_many();
-    $pakiet = Model::factory('Pakiet')->find_one($idPakiet);
-    $programy = Model::factory('Program')->find_many();
-    
-    $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'pakiet'=>$pakiet, 'programy'=>$programy, 'form'=>'add'));
-});
-
-$app->post('/admin/tv/pakiet/:idPakiet/programy/add', function ($idPakiet) use ($admin) {
-    
-    //TODO sprawdzić czy dodaje poprawnie program z listy
-    
-    
-   $tematyki = Model::factory('Tematyka')->find_many(); 
-   $pakiet = Model::factory('Pakiet')->find_one($idPakiet);
-   $programy = Model::factory('Program')->find_many();
-   
-
-   
-   $programSelect = $admin->app->request()->post('program-select');
-   
-   if(!empty($programSelect)) {
-       
-       $program = Model::factory('Program')->find_one($admin->app->request()->post('program-select'));
-       
-       if($program instanceof Program) {
-           
-           $id = $program->id_tv;
-           
-       } else {
-           
-           $error['status']='1';
-           $error['msg']='Wystąpił błąd przy dopisywaniu wybranego programu.';
-           
-           $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'programy'=>$programy, 'pakiet'=>$pakiet, 'form'=>'add', 'error'=>$error));
-           exit();
-       }
-       
-       
-   } else {
-       
-       $programName = $admin->app->request()->post('name');
-       
-       $programOld = Model::factory('Program')->where('name',$programName)->find_one();   
-       
-       if($programOld instanceof Program) {
-           
-           $error['status']='1';
-           $error['msg']='Program o takiej nazwie już istnieje.';
-           
-           $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'programy'=>$programy, 'pakiet'=>$pakiet, 'form'=>'add', 'error'=>$error));
-           exit();
-           
-       } else {
-       
-        $program=Model::factory('Program')->create(); 
-
-        $program->name = $admin->app->request()->post('name');
-
-            if (isset($_FILES['file'])) {
-
-                $error = $program->setImage($_FILES);
-
-                if($error['status']==1) {
-                        $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'pakiet'=>$pakiet, 'programTematyki'=>$programTematyki, 'program'=>$program, 'form'=>'edit', 'error'=>$error));
-                    exit();
-                } else {
-
-                $program->img  = $error['uploaded_file'];
-
-                }
-
-            } 
-
-            $program->save();
-            $id = $program->id();
-        
-       } 
-   
-   }
-        
-        $tematykaCheckboxArray = $admin->app->request()->post('tematykaCheckboxArray');
-
-        if(count($tematykaCheckboxArray>0)) {
-            
-            $pakietTematyki = $pakiet->tematyka()->find_array('id_tv_tematyka');
-
-            //spłaszczenie tablicy z dwuwymiarowej do jednowymiarowej. Zamienienie obiektu recursive na tablice, gdzie false jako 2 argument 
-            //oznacza nie zachowanie indeksow jako indeksow w splaszczonej tabeli (indeksy sie powielaly w tym wypadku)
-            $pakietTematykiArray = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($pakietTematyki)),false);
-
-            foreach($tematykaCheckboxArray as $rowTematykaCheckboxArray) {
-            
-                if(!in_array($rowTematykaCheckboxArray, $pakietTematykiArray)) {
-                    
-                    try {
-                        $pakietTematyka = Model::factory('PakietTematyka')->create();
-                        $pakietTematyka->tv_kategorie_id = $idPakiet;
-                        $pakietTematyka->tv_tematyka_id = $rowTematykaCheckboxArray;
-                        if(!$pakietTematyka->save()) throw new Exception('Coś poszło nie tak. Tematyka nie została powiązana z pakietem') ;
-                    }
-                    catch (Exception $e) {
-                        $error['status'] = '1';
-                        $error['msg'] = $e->getMessage();
-                        $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'pakiet'=>$pakiet, 'program'=>$program, 'form'=>'edit', 'error'=>$error));
-                        exit();
-                    }
-                }
-
-                try {
-                    $pakietTematyka = Model::factory('PakietTematyka')->where('tv_tematyka_id',$rowTematykaCheckboxArray)->where('tv_kategorie_id',$idPakiet)->find_one();
-                    $tematykaProgram = Model::factory('TematykaProgram')->create();
-                    $tematykaProgram->tv_programy_id = $id;
-                    $tematykaProgram->kategorie_tematyka_id = $pakietTematyka->id_kategorie_tematyka;
-                    if(!$tematykaProgram->save()) throw new Exception('Coś poszło nie tak. Program nie została powiązana z pakietem-tematyką') ;;
-                } 
-                catch (Exception $e) {
-                    $error['status'] = '1';
-                    $error['msg'] = $e->getMessage();
-                    $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'pakiet'=>$pakiet,  'program'=>$program, 'form'=>'edit', 'error'=>$error));
-                    exit();
-                }
-            }
-
-        }
-        
-        $error['status']='0';
-        $error['msg']='Program został dodany poprawnie';
-        
-    
-    //pobieram ponownie, aby zaktualizować listę dla programu
-    $programTematyki = Model::factory('Program')->filter('getChannelTematyka',$idPakiet, $id)->find_many();
-    
-    $admin->render('/tv/program/view.php', array('tematyki'=>$tematyki, 'pakiet'=>$pakiet, 'programTematyki'=>$programTematyki, 'program'=>$program, 'form'=>'edit', 'error'=>$error));
-});
-
-
-//dorzucić przeskalnowanie obrazka
-//zarzadzanie telewizja - kanalami tv - dodawanie, przepiannaie
-//AJAX ładowanie obrazków telewizji
